@@ -19,15 +19,22 @@ Tracking System: REE administrators can track the progress of students, mentor i
 ## System Design
 ### Front-End (React):
 Student Dashboard: Displays job matches, career progress, and certifications.
+
 Employer Dashboard: Lets employers post jobs, review applications, and track the recruitment process.
+
 Training Module: Provides access to training resources, certifications, and quizzes to track skill development.
+
 Mentorship Forum: Connects students with alumni and mentors for advice, group study, and interview preparation.
 
 ### Back-End (Node.js & Express.js):
 API: Handles all data requests between the front-end and back-end (RESTful services).
+
 Authentication: Manages user registration, login, and permissions (student, admin, employer).
+
 Database (MongoDB): Stores user profiles, job listings, certifications, and progress data.
+
 Resume Upload & ATS: Allows students to upload resumes and provides a matching system for job listings.
+
 Database (MongoDB):
 User Collection: Stores user data (name, email, profile info, role).
 Job Collection: Stores job postings and employer information.
@@ -100,8 +107,13 @@ Here’s a simple flowchart of how a student would interact with the platform:
 
 ### Technology Stack
 Frontend: React for building a dynamic user interface and user-friendly experience.
+
 Backend: Node.js with Express.js to handle API requests and manage authentication.
+
 Database: MongoDB for storing user profiles, job listings, resumes, certifications, and tracking progress.
+
 Authentication: JWT (JSON Web Tokens) for secure login and session management.
+
 File Uploads: Multer library in Node.js to handle resume uploads.
+
 Job Matching: Basic matching algorithm that cross-references student qualifications with job requirements.
