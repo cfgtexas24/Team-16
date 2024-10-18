@@ -1,5 +1,6 @@
 # Team-16
 
+# IMPORTANT - MAKE SURE TO CREATE A .env file and copy and paste the contents from sample.env and replace "<password_template>" with the password
 
 # NPM installs 
 
