@@ -10,10 +10,15 @@ Fosters peer support and mentorship with features for alumni and study buddies.
 
 ## Core Features:
 User Profiles: Students and alumni create profiles, upload resumes, and enter job-related qualifications.
+
 Job Matching & ATS: Students can search or get matched with jobs based on their qualifications.
+
 Career Resources: Offers free training courses and certifications, especially in high-demand fields like tech.
+
 Peer Support: A forum for students to interact, form study groups, and get mentorship from alumni.
+
 Employer Dashboard: Employers post job listings and track student applications.
+
 Tracking System: REE administrators can track the progress of students, mentor involvement, and job placements.
 
 ## System Design
