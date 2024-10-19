@@ -6,12 +6,16 @@ import RegisterPage from "./features/register/RegisterPage";
 import ProfileView from "./components/profileView";
 import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
 import HomePage from "./features/home/HomePage";
+import EmployeeLoginPage from "./features/login/EmployeeLoginPage"
+import MentorLoginPage from "./features/login/MentorLoginPage";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import './App.css';
 import JobPage from './features/Job Page/JobPage';
+import AdminLoginPage from "./features/login/AdminLoginPage";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +43,18 @@ const router = createBrowserRouter([
     path: "/home",
     element: <HomePage />,
   },
+  {
+    path: "/employer-signin",
+    element: <EmployeeLoginPage />,
+  },
+  {
+    path: "/mentor-signin",
+    element: <MentorLoginPage />,
+  },
+  {
+    path: "/admin-signin",
+    element: <AdminLoginPage />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

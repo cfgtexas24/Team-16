@@ -93,6 +93,72 @@ export const login = async (email, password) => {
   }
 };
 
+export const loginEmployee = async (email, password) => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/employers/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await response.json();
+  if (response.status === 200) {
+    localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
+    window.location.href = '/home'
+    return true; // Login successful
+  } else {
+    if (data.error) {
+      throw new Error(data.error);
+    } else {
+      throw new Error('Login failed');
+    }
+  }
+};
+
+export const loginMentor = async (email, password) => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/mentor/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await response.json();
+  if (response.status === 200) {
+    localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
+    window.location.href = '/home'
+    return true; // Login successful
+  } else {
+    if (data.error) {
+      throw new Error(data.error);
+    } else {
+      throw new Error('Login failed');
+    }
+  }
+};
+
+export const loginAdmin = async (email, password) => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/admin/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await response.json();
+  if (response.status === 200) {
+    localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
+    window.location.href = '/home'
+    return true; // Login successful
+  } else {
+    if (data.error) {
+      throw new Error(data.error);
+    } else {
+      throw new Error('Login failed');
+    }
+  }
+};
+
 export const register = async (email, password) => {
   const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/client', {
     method: 'POST',
@@ -112,6 +178,8 @@ export const register = async (email, password) => {
     }
   }
 };
+
+
 
 export const getDecodedToken = () => {
   const token = localStorage.getItem(LOCAL_STORAGE_JWT_KEY);
