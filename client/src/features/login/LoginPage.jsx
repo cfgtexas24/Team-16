@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css'
 
 function LoginPage() {
@@ -14,6 +15,13 @@ function LoginPage() {
     // You would send the data to the backend for authentication here
   };
   
+  const navigate = useNavigate();
+
+  // Add this function to handle navigation to the profile page
+  const handleProfileNavigation = () => {
+    navigate('/profile');
+  };
+
   return (
     <header className="App-header">
       <h1>ReBirth Empowerment Education</h1>
@@ -47,6 +55,11 @@ function LoginPage() {
         <a href="/employer-signin">Employer looking for talent? <strong>Sign in here</strong></a>
         <a href="/admin-signin">Administrator? <strong>Sign in here</strong></a>
       </div>
+
+      {/* Add this button somewhere in your JSX, perhaps after the sign-in form */}
+      <button onClick={handleProfileNavigation} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
+        Go to Profile
+      </button>
     </header>
   );
 }

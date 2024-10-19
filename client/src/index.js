@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from "./features/login/LoginPage";
+import ProfileView from "./components/profile";
 
 import {
   createBrowserRouter,
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfileView />,
   },
 ]);
 
