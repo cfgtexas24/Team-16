@@ -14,7 +14,7 @@ import AppLayout from "./features/home/HomePage";
 import EmployeeLoginPage from "./features/login/EmployeeLoginPage"
 import MentorLoginPage from "./features/login/MentorLoginPage";
 import Header from "./components/topbar"
-
+import CertificatePage from "./features/CertificatePage/Certificate";
 import AdminDataPage from "./features/AdminDataPage/DataPage";
 
 import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterGenerator";
@@ -97,6 +97,10 @@ const router = createBrowserRouter([
     path: '/budget-game',
     element: <BudgetGame />,
 
+  },
+  {
+    path: "/certifications",
+    element: <CertificatePage />,
   }
 ]);
 
