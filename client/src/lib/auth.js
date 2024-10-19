@@ -24,7 +24,6 @@ export const fetchWithAuth = async (url, options) => {
   }
   return data;
 };
-
 export const login = async (email, password) => {
   const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/client/login', {
     method: 'POST',
@@ -36,14 +35,13 @@ export const login = async (email, password) => {
   const data = await response.json();
   if (response.status === 200) {
     localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
-    return data;
+    window.location.href = '/home'
   } else {
     if (data.error) {
       alert(data.error);
     } else {
       alert('An error occurred while logging in.');
     }
-    return null;
   }
 };
 
