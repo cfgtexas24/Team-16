@@ -11,6 +11,7 @@ import AdminDataPage from "./features/AdminDataPage/DataPage";
 import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterGenerator";
 import ResumeReviewer from "./features/resume-reviewer/Reviewer";
 import Resources from "./features/misc-resources/Resources";
+import BudgetGame from "./features/budget-game/BudgetGame";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
       path: "/resources",
       element: <Resources />,
+  },
+  {
+    path: '/budget-game',
+    element: <BudgetGame />,
   }
 ]);
 
