@@ -4,14 +4,20 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 
-const PORT = process.env.PORT;
+
 const app = express();
-const express = require('express');
+
 const employerRoutes = require('./routes/employerRoutes');
+const clientRoutes = require('./routes/clientRoutes');
 
 
 app.use(cors());
 app.use(express.json());
+
+
+
+app.use('/api/employers', employerRoutes);
+app.use('/api/client', clientRoutes);
 
 
 // Listen for requests
@@ -29,7 +35,7 @@ mongoose.connect(process.env.MONGO_URI)
         console.error(error)
     })
 
-app.use(express.json());
-app.use('/api/employers', employerRoutes);
+
+
 
 // ... other app configurations ...
