@@ -33,7 +33,7 @@ import AdminLoginPage from "./features/login/AdminLoginPage";
 
 import Stocks from "./features/stocks/Stocks";
 import AboutUs from "./features/AboutUsPage/aboutus";
-import CertificationsPage from "./features/certifications/certifications";
+import CertificationsPage from "./features/CertificatePage/Certificate";
 const router = createBrowserRouter([
   {
     path: "/",
