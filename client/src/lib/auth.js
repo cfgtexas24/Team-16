@@ -36,14 +36,13 @@ export const login = async (email, password) => {
   const data = await response.json();
   if (response.status === 200) {
     localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
-    return data;
+    return true; // Login successful
   } else {
     if (data.error) {
-      alert(data.error);
+      throw new Error(data.error);
     } else {
-      alert('An error occurred while logging in.');
+      throw new Error('Login failed');
     }
-    return null;
   }
 };
 

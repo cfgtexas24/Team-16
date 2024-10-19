@@ -1,62 +1,195 @@
 import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { fetchWithAuth } from '../lib/auth';
+import { getDecodedToken } from '../lib/auth';
 
-const ProfileView = () => {
-  const [profileData, setProfileData] = useState(null);
+function ProfileView() {
+  const [profile, setProfile] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedProfile, setEditedProfile] = useState(null);
 
   useEffect(() => {
-    // Fetch profile data from the backend
-    fetch('/api/profile')
-      .then(response => response.json())
-      .then(data => setProfileData(data))
-      .catch(error => console.error('Error fetching profile data:', error));
+    fetchProfile();
   }, []);
 
-  if (!profileData) return <div>Loading...</div>;
+  const fetchProfile = async () => {
+    try {
+      const decodedToken = getDecodedToken();
+      const { email } = decodedToken;
+      
+      const data = await fetchWithAuth('/api/client/profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      setProfile(data.client);
+      setEditedProfile(data.client);
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
+  };
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    setEditedProfile(profile);
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await fetchWithAuth('/api/client/editProfile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(editedProfile),
+      });
+      if (response.ok) {
+        setProfile(editedProfile);
+        setIsEditing(false);
+      } else {
+        console.error('Error saving profile:', await response.text());
+      }
+    } catch (error) {
+      console.error('Error saving profile:', error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditedProfile({ ...editedProfile, [name]: value });
+  };
+
+  const handleExperienceChange = (index, field, value) => {
+    const updatedExperiences = [...editedProfile.experiences];
+    updatedExperiences[index][field] = value;
+    setEditedProfile({ ...editedProfile, experiences: updatedExperiences });
+  };
+
+  const addExperience = () => {
+    const newExperience = {
+      employerName: '',
+      roleName: '',
+      description: '',
+      startDate: '',
+      endDate: '',
+    };
+    setEditedProfile({
+      ...editedProfile,
+      experiences: [...editedProfile.experiences, newExperience],
+    });
+  };
+
+  const removeExperience = (index) => {
+    const updatedExperiences = editedProfile.experiences.filter((_, i) => i !== index);
+    setEditedProfile({ ...editedProfile, experiences: updatedExperiences });
+  };
+
+  if (!profile) return <div>Loading...</div>;
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center">
-          <img src="/logo.svg" alt="Rebirth Empowerment" className="h-8 mr-2" />
-          <h2 className="text-xl font-bold">REBIRTH EMPOWERMENT</h2>
-        </div>
-        <X className="cursor-pointer" />
-      </div>
-
-      <div className="space-y-4">
+    <div className="profile-view">
+      <h2>Profile</h2>
+      {isEditing ? (
         <div>
-          <h3 className="font-semibold">Name</h3>
-          <p className="bg-gray-100 p-2 rounded">{profileData.name}</p>
-        </div>
-        <div>
-          <h3 className="font-semibold">Email</h3>
-          <p className="bg-gray-100 p-2 rounded">{profileData.email}</p>
-        </div>
-        <div>
-          <h3 className="font-semibold">Phone #</h3>
-          <p className="bg-gray-100 p-2 rounded">{profileData.phone}</p>
-        </div>
-
-        <div>
-          <h3 className="font-semibold mb-2">Experiences</h3>
-          {profileData.experiences.map((exp, index) => (
-            <div key={index} className="mb-4 bg-gray-100 p-2 rounded">
-              <p><strong>Employer Name:</strong> {exp.employerName}</p>
-              <p><strong>Role Name:</strong> {exp.roleName}</p>
-              <p><strong>Description:</strong> {exp.description}</p>
-              <p><strong>Start Date:</strong> {exp.startDate}</p>
-              <p><strong>End Date:</strong> {exp.endDate}</p>
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={editedProfile.email}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Phone:
+            <input
+              type="tel"
+              name="phone"
+              value={editedProfile.phone}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            LinkedIn:
+            <input
+              type="url"
+              name="linkedin"
+              value={editedProfile.linkedin}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Skills (comma-separated):
+            <input
+              type="text"
+              name="skills"
+              value={editedProfile.skills.join(', ')}
+              onChange={(e) => setEditedProfile({ ...editedProfile, skills: e.target.value.split(', ') })}
+            />
+          </label>
+          <h3>Experiences</h3>
+          {editedProfile.experiences.map((exp, index) => (
+            <div key={index} className="experience-entry">
+              <input
+                type="text"
+                placeholder="Employer Name"
+                value={exp.employerName}
+                onChange={(e) => handleExperienceChange(index, 'employerName', e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Role Name"
+                value={exp.roleName}
+                onChange={(e) => handleExperienceChange(index, 'roleName', e.target.value)}
+              />
+              <textarea
+                placeholder="Description"
+                value={exp.description}
+                onChange={(e) => handleExperienceChange(index, 'description', e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Start Date"
+                value={exp.startDate}
+                onChange={(e) => handleExperienceChange(index, 'startDate', e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="End Date"
+                value={exp.endDate}
+                onChange={(e) => handleExperienceChange(index, 'endDate', e.target.value)}
+              />
+              <button onClick={() => removeExperience(index)}>Remove</button>
             </div>
           ))}
+          <button onClick={addExperience}>Add Experience</button>
+          <div>
+            <button onClick={handleSave}>Save</button>
+            <button onClick={handleCancel}>Cancel</button>
+          </div>
         </div>
-
-        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-          Add New Experience
-        </button>
-      </div>
+      ) : (
+        <div>
+          <p>Email: {profile.email}</p>
+          <p>Phone: {profile.phone}</p>
+          <p>LinkedIn: {profile.linkedin}</p>
+          <p>Skills: {profile.skills.join(', ')}</p>
+          <h3>Experiences</h3>
+          {profile.experiences.map((exp, index) => (
+            <div key={index} className="experience-entry">
+              <p>Employer: {exp.employerName}</p>
+              <p>Role: {exp.roleName}</p>
+              <p>Description: {exp.description}</p>
+              <p>Start Date: {exp.startDate}</p>
+              <p>End Date: {exp.endDate}</p>
+            </div>
+          ))}
+          <button onClick={handleEdit}>Edit Profile</button>
+        </div>
+      )}
     </div>
   );
-};
+}
 
 export default ProfileView;

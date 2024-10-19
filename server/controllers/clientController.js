@@ -43,7 +43,7 @@ exports.loginClient = async (req, res) => {
 
 
 exports.editProfile = async (req, res) => {
-    const { email, password, skills, applied, phone, linkedin, experiences } = req.body;
+    const { email, password, skills, phone, linkedin, experiences } = req.body;
 
     try {
         // Find the client by email
@@ -55,8 +55,7 @@ exports.editProfile = async (req, res) => {
 
         // Update fields only if they are provided
         if (password) client.password = password;
-        if (skills) client.skills = skills; // Ensure skills is updated appropriately
-        if (applied) client.applied = applied; // Update applied jobs if provided
+        if (skills) client.skills = skills;
         if (phone) client.phone = phone;
         if (linkedin) client.linkedin = linkedin;
         if (experiences) client.experiences = experiences;
@@ -64,7 +63,33 @@ exports.editProfile = async (req, res) => {
         // Save the updated client document
         await client.save();
 
-        res.status(200).json({ message: "Profile updated successfully", client });
+        // Remove sensitive information before sending response
+        const clientResponse = client.toObject();
+        delete clientResponse.password;
+
+        res.status(200).json({ message: "Profile updated successfully", client: clientResponse });
+        
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+};
+
+exports.getProfile = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const client = await Client.findOne({ email });
+        
+        if (!client) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        // Remove sensitive information before sending response
+        const clientResponse = client.toObject();
+        delete clientResponse.password;
+
+        res.status(200).json({ client: clientResponse });
         
     } catch (err) {
         console.error(err);

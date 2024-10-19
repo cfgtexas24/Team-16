@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import './login.css'
 import { login } from '../../lib/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 function LoginPage() {
   // States for handling user input
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // You would send the data to the backend for authentication here
-    
-    login(username, password);
+    try {
+      await login(username, password);
+      // If login is successful, navigate to the profile page
+      navigate('/profile');
+    } catch (error) {
+      console.error('Login failed:', error);
+      // Handle login error (e.g., show an error message to the user)
+    }
   };
   
   return (
