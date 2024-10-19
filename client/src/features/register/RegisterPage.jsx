@@ -1,7 +1,10 @@
+// TODO: this is basically a copy of the login page, but for registering. we should try to de duplicate this code
+
 import React, { useState } from 'react';
-import './login.css'
-import { login } from '../../lib/auth';
+import '../login/login.css'
+import { register, login } from '../../lib/auth';
 import { Link } from 'react-router-dom';
+
 function LoginPage() {
   // States for handling user input
   const [username, setUsername] = useState('');
@@ -14,7 +17,9 @@ function LoginPage() {
     console.log("Password:", password);
     // You would send the data to the backend for authentication here
     
-    login(username, password);
+    register(username, password).then(() => {
+      login(username, password);
+    });
   };
   
   return (
@@ -38,10 +43,10 @@ function LoginPage() {
           onChange={(e) => setPassword(e.target.value)} 
           required 
         />
-        <button type="submit">Sign In</button>
+        <button type="submit">Register</button>
       </form>
       <div className="signup-link">
-        Don't have an account? <Link to="/register">Sign up now</Link>
+        Already have an account? <Link to="/">Log in now</Link>
       </div>
 
       <div className="additional-signin">
