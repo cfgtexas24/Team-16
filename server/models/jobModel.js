@@ -43,7 +43,9 @@ const jobSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  clients: [{type: mongoose.Schema.Types.ObjectId,
+    ref: 'Client'}]
 });
 const Job = mongoose.model('Job', jobSchema);
 

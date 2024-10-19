@@ -116,3 +116,54 @@ async function fetchJobsByCategory(category) {
         throw new Error('Failed to fetch jobs'); // Throw error to be handled in the controller
     }
 }
+
+exports.getClientApplications = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const client = await Client.findOne({ email: email });
+        
+        if (!client) {
+            return res.status(400).json({ error: "User not found" });
+        }
+
+        // Assuming 'applied' is an array of applications stored in the client document
+        const applications = client.applied || []; // Default to an empty array if no applications
+
+        res.status(200).json({ applications }); // Return the applications
+
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+        res.status(500).json({ error: "Server error" });
+    }
+};
+
+exports.createClientApplications = async (req, res) => {
+    const { email, jobId } = req.body;
+
+    try {
+        const client = await Client.findOne({ email: email });
+        
+        if (!client) {
+            return res.status(400).json({ error: "User not found" });
+        }
+
+        // Create a new application object
+        const newApplication = {
+            job_id: jobId, // Use the provided jobId
+            status: 'In progress' // Default status can be 'applied', change as needed
+        };
+
+        // Push the new application into the client's applied array
+        client.applied.push(newApplication);
+
+        // Save the updated client document
+        await client.save();
+
+        res.status(200).json({ message: "Application submitted successfully", applications: client.applied });
+
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+        res.status(500).json({ error: "Server error" });
+    }
+};
