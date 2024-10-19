@@ -8,6 +8,7 @@ const cors = require('cors')
 const app = express();
 const employerRoutes = require('./routes/employerRoutes');
 const clientRoutes = require('./routes/clientRoutes');
+const jobRoutes = require('./routes/jobRoutes');
 
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use('/api/employers', employerRoutes);
 app.use('/api/client', clientRoutes);
+app.use('/api/jobs', jobRoutes);
 
 
 // Listen for requests
