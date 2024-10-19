@@ -7,15 +7,23 @@
   border-radius: 5px;
 }
 
+/* login.css */
+.App-header {
+  margin-top: 50px; /* Adjust the value as needed */
+}
 .sign-in-form button {
   width: 100%;
   padding: 10px;
-  background-color: #FFC107; /* Yellow color */
-  color: white;
+  background-color: #ffc107; /* Yellow color */
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.App-header {
+  margin-top: 500px; /* Adjust the value as needed */
 }
 
 .sign-in-form button:hover {
@@ -30,7 +38,7 @@
 
 .signup-link a,
 .additional-signin a {
-  color: #FFC107; /* Yellow color */
+  color: #ffc107; /* Yellow color */
   text-decoration: none;
 }
 

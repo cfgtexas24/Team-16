@@ -1,95 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./home.css";
-import TopBar from "../../components/topbar";
-import SideBar from "../../components/sidebar_mobile";
-import { getDecodedToken } from "../../lib/auth";
+import StreakCard from "../../components/streak_card";
+import ApplicationList from "../../components/application_list";
 
-function HomePage() {
-  const [n, setName] = useState("")
-  useEffect( () => {
-    const decodedToken = getDecodedToken();
-    const {name} = decodedToken;
-    setName(name)
-  
-  }, [])
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
-  const navigate = useNavigate(); // Initialize useNavigate
+import AppLayout from "../../components/AppLayout";
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
-  };
-
-  const handleProfileClick = () => {
-    navigate('/profile'); // Navigate to ProfileView
-  };
-
+function HomePage() { 
   return (
-    <div className="home-container m-0 p-0 relative h-screen">
-      <div className="relative">
-        <TopBar />
-        <SideBar
-          isOpen={isSidebarOpen}
-          className="absolute visibility:hidden"
-          toggleSidebar={toggleSidebar}
-        />
-      </div>
-      <div className="flex items-center justify-between top-4 left-0 right-0 z-10 sm:hidden">
-        <button onClick={toggleSidebar} className="m-4 p-2 rounded">
-          <img
-            src={
-              isSidebarOpen
-                ? "/icons8-cancel-48.png"
-                : "/icons8-hamburger-menu-50.png"
-            } // Reference images directly
-            alt={isSidebarOpen ? "Close Sidebar" : "Open Sidebar"}
-            className="w-6 h-6" // Adjust size as necessary
-          />
-        </button>
-        <button
-          className="m-4 p-4 px-6 text-2xl text-gray-300 rounded-3xl"
-          style={{ backgroundColor: "#495195" }}
-          onClick={handleProfileClick} // Add onClick handler
-        >
-          Profile
-        </button>
-      </div>
-      <div className="hidden sm:flex items-center justify-between top-0 left-0 right-0 z-10 p-4">
-        <div className="flex space-x-8 pl-16">
-          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
-            Home
-          </button>
-          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
-            Jobs
-          </button>
-          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
-            Messages
-          </button>
-          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
-            Training
-          </button>
-          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
-            Certifications
-          </button>
-        </div>{" "}
-        <button
-          className="m-4 p-4 px-6 text-2xl text-gray-300 rounded-3xl"
-          style={{ backgroundColor: "#495195" }}
-          onClick={handleProfileClick} // Add onClick handler
-        >
-          Profile
-        </button>
-      </div>
-      <div className="content p-4">
-        <h2
-          className="text-2xl text-black font-bold p-10"
-          style={{ backgroundColor: "#F6C344" }}
-        >
-          Welcome {n}
-        </h2>
-      </div>
-    </div>
-  );
+    <AppLayout title="Overview">
+      <StreakCard />
+      <ApplicationList />
+    </AppLayout>
+  )
 }
+
+
 
 export default HomePage;

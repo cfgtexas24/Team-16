@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: #ffffff;
+  width: 375px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: left;
+}
+
+.header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #0a0a0ae8;
+  background-color: #ffda06;
+  outline: none;
+}
+
+.message-list {
+  list-style: none;
+  padding: 15px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.message-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.message-item .avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.message-content {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.message-content h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.message-content p {
+  font-size: 14px;
+  color: #777;
+}
+
+.time {
+  font-size: 12px;
+  color: #aaa;
+  margin-right: 10px;
+}
+
+.unread-count {
+  background-color: #ffd700;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  padding: 10px 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.footer-btn.active {
+  background-color: #ffd700;
+}
+
+.footer-btn:hover {
+  background-color: #ffc700;
+}

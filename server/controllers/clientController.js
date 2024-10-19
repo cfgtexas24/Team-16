@@ -47,7 +47,6 @@ exports.editProfile = async (req, res) => {
 
     const { email, password, skills, phone, linkedin, experiences, name } = req.body;
 
-
     try {
         // Find the client by email
         const client = await Client.findOne({ email });
