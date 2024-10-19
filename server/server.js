@@ -6,7 +6,6 @@ const cors = require('cors')
 
 
 const app = express();
-
 const employerRoutes = require('./routes/employerRoutes');
 const clientRoutes = require('./routes/clientRoutes');
 
