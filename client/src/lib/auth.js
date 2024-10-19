@@ -179,6 +179,26 @@ export const register = async (email, password) => {
   }
 };
 
+export const apply = async (email, jobId) => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/client/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await response.json();
+  if (response.status === 201) {
+
+  } else {
+    if (data.error) {
+      alert(data.error);
+    } else {
+      alert('Email already exists');
+    }
+  }
+};
+
 
 
 export const getDecodedToken = () => {
