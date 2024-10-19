@@ -32,3 +32,30 @@ exports.getAllPositions = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+  exports.loginEmployer = async (req, res) => {
+    const {email, password} = req.body
+    
+    try {
+        const employer = await Employer.findOne({email: email})
+        if (!employer) {
+            return res.status(400).json({error: "User not found"})
+        }
+        const isMatch = await employer.comparePassword(password)
+        if (!isMatch) {
+            return res.status(401).json({error: "Incorrect password"})
+        }
+        const token = jwt.sign({
+            email: employer.email,
+            user: "employer"
+        },
+        process.env.token
+
+    )
+        
+        
+        return res.json({status: 200, token: token})
+    } catch(err){
+        res.json(500).json({error: "Server error"})
+    }
+}
