@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./JobPageStyling.css"; // Your CSS file with mobile styling
 import { getJobs, getJobsbyFeature } from "../../lib/auth";
+import AppLayout from "../../components/AppLayout";
 
 const JobPage = () => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -67,79 +68,74 @@ const JobPage = () => {
   };
 
   return (
-    <div className="job-page">
-      <header className="header">
-        <img src="your_logo_url" alt="Rebirth Empowerment" className="logo" />
-        <button className="close-button" onClick={() => navigate("/home")}>
-          X
-        </button>{" "}
-        {/* Navigate to HomePage */}
-      </header>
+    <AppLayout title="Jobs">
+      <div className="job-page">
 
-      <div className="search-category">
-        <button
-          className="category-button"
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        >
-          {selectedCategory} &#x25BC; {/* Down arrow */}
-        </button>
-        {isDropdownOpen && (
-          <div className="category-dropdown">
-            <button onClick={() => handleCategorySelect("All")}>All</button>
-            <button onClick={() => handleCategorySelect("tech")}>Tech</button>
-            <button onClick={() => handleCategorySelect("construction")}>
-              Construction
-            </button>
-            <button onClick={() => handleCategorySelect("retail")}>
-              Retail
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div className="job-list">
-        {filteredJobs && filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <div className="job-card" key={job.id}>
-              <div className="company-info">
-                {job.employerData ? (
-                  <>
-                    <img
-                      src={job.employerData.company_logo}
-                      alt={job.employerData.company_name}
-                      className="company-logo"
-                    />
-                    <h4>{job.employerData.company_name}</h4>
-                  </>
-                ) : (
-                  <p>Loading employer info...</p> // Placeholder while loading
-                )}
-              </div>
-              <div className="job-details">
-                <h3>Position: {job.title}</h3>
-                <p>Location: {job.location}</p>
-                <p>Salary: {job.salary}</p>
-                <p>
-                  Shift Hours: {job.shiftHours.start} - {job.shiftHours.end}
-                </p>
-                {appliedJobs[job.id] ? (
-                  <div className="check-mark">&#10003;</div>
-                ) : (
-                  <button
-                    className="apply-button"
-                    onClick={() => handleApply(job.id)}
-                  >
-                    Apply
-                  </button>
-                )}
-              </div>
+        <div className="search-category">
+          <button
+            className="category-button"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            {selectedCategory} &#x25BC; {/* Down arrow */}
+          </button>
+          {isDropdownOpen && (
+            <div className="category-dropdown">
+              <button onClick={() => handleCategorySelect("All")}>All</button>
+              <button onClick={() => handleCategorySelect("tech")}>Tech</button>
+              <button onClick={() => handleCategorySelect("construction")}>
+                Construction
+              </button>
+              <button onClick={() => handleCategorySelect("retail")}>
+                Retail
+              </button>
             </div>
-          ))
-        ) : (
-          <p>No jobs available.</p>
-        )}
+          )}
+        </div>
+  
+        <div className="job-list">
+          {filteredJobs && filteredJobs.length > 0 ? (
+            filteredJobs.map((job) => (
+              <div className="job-card" key={job.id}>
+                <div className="company-info">
+                  {job.employerData ? (
+                    <>
+                      <img
+                        src={job.employerData.company_logo}
+                        alt={job.employerData.company_name}
+                        className="company-logo"
+                      />
+                      <h4>{job.employerData.company_name}</h4>
+                    </>
+                  ) : (
+                    <p>Loading employer info...</p> // Placeholder while loading
+                  )}
+                </div>
+                <div className="job-details">
+                  <h3>Position: {job.title}</h3>
+                  <p>Location: {job.location}</p>
+                  <p>Salary: {job.salary}</p>
+                  <p>
+                    Shift Hours: {job.shiftHours.start} - {job.shiftHours.end}
+                  </p>
+                  {appliedJobs[job.id] ? (
+                    <div className="check-mark">&#10003;</div>
+                  ) : (
+                    <button
+                      className="apply-button"
+                      onClick={() => handleApply(job.id)}
+                    >
+                      Apply
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>No jobs available.</p>
+          )}
+        </div>
       </div>
-    </div>
+    </AppLayout>
   );
 };
 
