@@ -1,4 +1,4 @@
-# Team-16
+# Team-16: JP Morgan Chase Code for <good> Hackathon 2024
 
 ### IMPORTANT - MAKE SURE TO CREATE A .env file and copy and paste the contents from sample.env and replace "<password_template>" with the password
 
