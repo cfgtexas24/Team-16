@@ -26,3 +26,12 @@ exports.logincaseManager = async (req, res) => {
         res.json(500).json({error: "Server error"})
     }
 }
+exports.createCaseManager = async (req, res) => {
+    try {
+      const newCaseManager = new CaseManager({email: req.body.email, password: req.body.password});
+      await newCaseManager.save();
+      res.status(201).json(CaseManager);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
