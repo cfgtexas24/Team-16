@@ -11,7 +11,7 @@ const caseManagerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    clients: { type: mongoose.Schema.Types.ObjectId, ref: 'Client', required: false}, // Reference to Client model
+    clients: [{ type: String, required: false}], // Reference to Client model
 }, { timestamps: true });
 
 // Pre-save hook to hash the password before saving
