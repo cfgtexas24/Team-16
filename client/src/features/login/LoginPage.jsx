@@ -6,9 +6,10 @@ function LoginPage() {
   // States for handling user input
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Username:", username);
     console.log("Password:", password);

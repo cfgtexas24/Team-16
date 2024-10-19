@@ -5,7 +5,14 @@ import SideBar from "../../components/sidebar_mobile";
 import StreakCard from "../../components/streak_card";
 import ApplicationList from "../../components/application_list";
 function HomePage() {
+  const [n, setName] = useState("");
+  useEffect(() => {
+    const decodedToken = getDecodedToken();
+    const { name } = decodedToken;
+    setName(name);
+  }, []);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen); // Toggle the sidebar state

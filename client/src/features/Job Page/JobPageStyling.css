@@ -1,0 +1,146 @@
+/* General job page styling */
+.job-page {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  font-family: Arial, sans-serif;
+}
+  
+/* Header and close button styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+.logo {
+  width: 100px;
+}
+  
+.close-button {
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+  
+/* Category Button */
+.category-button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #666;
+  text-align: left;
+  cursor: pointer;
+}
+  
+.category-button:hover {
+  background-color: #ececec;
+}
+  
+/* Dropdown Menu */
+.category-dropdown {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 5px;
+  width: 100%;
+}
+  
+.category-dropdown button {
+  padding: 10px;
+  background-color: #fff;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+}
+  
+.category-dropdown button:hover {
+  background-color: #f0f0f0;
+}
+  
+.category-dropdown button:last-child {
+  border-bottom: none;
+}
+  
+/* Job List */
+.job-list {
+  margin-top: 20px;
+}
+  
+/* Job Card Styling */
+.job-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f6c344;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-direction: column; /* Column layout for mobile */
+}
+  
+/* Company Section */
+.company-info {
+  text-align: center;
+  margin-bottom: 10px;
+}
+  
+.company-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+  
+/* Job Details Section */
+.job-details {
+  text-align: left;
+  flex-grow: 1;
+}
+  
+.job-details h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+  
+.job-details p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+  
+/* Apply Button */
+.apply-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #495195;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+  
+.apply-button:hover {
+  background-color: #3d447b;
+}
+
+/* Checkmark Styling */
+.check-mark {
+  font-size: 24px; /* Larger checkmark size */
+  color: green; /* Green color to indicate success */
+  text-align: center;
+}

@@ -5,8 +5,8 @@ require('dotenv').config();
 // Combined addJob and createJob
 exports.addJob = async (req, res) => {
   try {
-    const employerId = req.params.id;
-    const employer = await Employer.findById(employerId);
+    const employerEmail = req.body;
+    const employer = await Employer.findOne({email: email});
 
     if (!employer) {
       return res.status(404).json({ message: 'Employer not found' });
@@ -63,8 +63,11 @@ exports.deleteJob = async (req, res) => {
 
 // Get all jobs
 exports.getAllJobs = async (req, res) => {
+    
+    console.log("test")
   try {
     const jobs = await Job.find();
+    console.log(jobs)
     res.status(200).json(jobs);
   } catch (error) {
     res.status(500).json({ message: error.message });
