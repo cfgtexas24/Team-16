@@ -96,18 +96,18 @@ const router = createBrowserRouter([
   {
     path: '/budget-game',
     element: <BudgetGame />,
-<<<<<<< HEAD
+
 
   },
   {
     path: "/certifications",
     element: <CertificatePage />,
-=======
+
   },
   {
       path: '/messages',
       element: <Messages />,
->>>>>>> 4c25972017678aa6d9d23718e7c3f5b8552c4be2
+
   }
 ]);
 
