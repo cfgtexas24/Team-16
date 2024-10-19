@@ -29,7 +29,7 @@ function LoginPage() {
   };
   
   return (
-    <header className="App-header">
+    <header className="App-header" >
       <h1>ReBirth Empowerment Education</h1>
       <p className="hero-text">
         Empowering people to find jobs and equip themselves for success
