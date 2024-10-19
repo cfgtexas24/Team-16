@@ -25,6 +25,52 @@ export const fetchWithAuth = async (url, options) => {
   return data;
 };
 
+
+export const getJobs = async () => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/jobs/getJobs', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  if (response.status === 200) {
+    console.log(data)
+    return data;
+  } else {
+    if (data.error) {
+      alert(data.error);
+    } else {
+      alert('An while trying to get jobs.');
+    }
+    return null;
+  }
+};
+
+export const getJobsbyFeature = async (category) => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/jobs/searchBySkill', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ category }),
+  });
+  const data = await response.json();
+  if (response.status === 200) {
+    console.log(data)
+    return data;
+  } else {
+    if (data.error) {
+      alert(data.error);
+    } else {
+      alert('An while trying to get jobs.');
+    }
+    return null;
+  }
+};
+
+
+
 export const login = async (email, password) => {
   const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/client/login', {
     method: 'POST',
@@ -36,14 +82,14 @@ export const login = async (email, password) => {
   const data = await response.json();
   if (response.status === 200) {
     localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
-    return data;
+    window.location.href = '/home'
+    return true; // Login successful
   } else {
     if (data.error) {
-      alert(data.error);
+      throw new Error(data.error);
     } else {
-      alert('An error occurred while logging in.');
+      throw new Error('Login failed');
     }
-    return null;
   }
 };
 
@@ -69,6 +115,7 @@ export const register = async (email, password) => {
 
 export const getDecodedToken = () => {
   const token = localStorage.getItem(LOCAL_STORAGE_JWT_KEY);
+  if (!token) return null;
   const body = token.split('.')[1];
   const decode = JSON.parse(atob(body));
   return decode

@@ -3,15 +3,22 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./features/login/LoginPage";
 import RegisterPage from "./features/register/RegisterPage";
+import ProfileView from "./components/profileView";
+import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
 import HomePage from "./features/home/HomePage";
 import AdminDataPage from "./features/AdminDataPage/DataPage";
 
+import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterGenerator";
+import ResumeReviewer from "./features/resume-reviewer/Reviewer";
+import Resources from "./features/misc-resources/Resources";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import './App.css';
 import JobPage from './features/Job Page/JobPage';
+import Stocks from './features/stocks/Stocks';
+
 
 const router = createBrowserRouter([
   {
@@ -28,6 +35,14 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
   },
   {
+    path: "/profile",
+    element: <ProfileView />,
+  },
+  {
+    path: "/resume-generator",
+    element: <ViewDocInDevelopment />,
+  },
+  {
     path: "/home",
     element: <HomePage />,
   },
@@ -35,14 +50,28 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <AdminDataPage />,
   },
+  {
+    path: "/cover-letter-generator",
+    element: <CoverLetterGenerator />,
+  },
+  {
+    path: "/resume-reviewer",
+    element: <ResumeReviewer />,
+  },
+  {
+      path: "/stocks",
+      element: <Stocks />,
+  },
+  {
+      path: "/resources",
+      element: <Resources />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <div className="App">
-      <RouterProvider router={router} />
-    </div>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

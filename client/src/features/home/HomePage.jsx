@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./home.css";
 import TopBar from "../../components/topbar";
 import SideBar from "../../components/sidebar_mobile";
+import { getDecodedToken } from "../../lib/auth";
 
 function HomePage() {
+  const [n, setName] = useState("")
+  useEffect( () => {
+    const decodedToken = getDecodedToken();
+    const {name} = decodedToken;
+    setName(name)
+  
+  }, [])
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
+  };
+
+  const handleProfileClick = () => {
+    navigate('/profile'); // Navigate to ProfileView
   };
 
   return (
@@ -35,6 +49,7 @@ function HomePage() {
         <button
           className="m-4 p-4 px-6 text-2xl text-gray-300 rounded-3xl"
           style={{ backgroundColor: "#495195" }}
+          onClick={handleProfileClick} // Add onClick handler
         >
           Profile
         </button>
@@ -60,6 +75,7 @@ function HomePage() {
         <button
           className="m-4 p-4 px-6 text-2xl text-gray-300 rounded-3xl"
           style={{ backgroundColor: "#495195" }}
+          onClick={handleProfileClick} // Add onClick handler
         >
           Profile
         </button>
@@ -69,7 +85,7 @@ function HomePage() {
           className="text-2xl text-black font-bold p-10"
           style={{ backgroundColor: "#F6C344" }}
         >
-          Welcome Priyanka Koppula
+          Welcome {n}
         </h2>
       </div>
     </div>
