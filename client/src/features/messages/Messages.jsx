@@ -13,7 +13,7 @@ const Messages = () => {
       <ul className="message-list">
         {/* Message 1 */}
         <li className="message-item">
-          <img src="client\public\jpm.jpg" alt="Mentor Paul" className="avatar" />
+          <img src="/avatar.jpg" alt="Mentor Paul" className="avatar" />
           <div className="message-content">
             <h3>Mentor Paul</h3>
             <p>And to follow-up, could you schedule a time for our bi-weekly mentor meetings</p>
@@ -24,7 +24,7 @@ const Messages = () => {
           </div>
         </li>
         <li className="message-item">
-          <img src="client\public\jpm.jpg" alt="JPM Recruiting" className="avatar" />
+          <img src="/chase.jpg" alt="JPM Recruiting" className="avatar" />
           <div className="message-content">
             <h3>JPM Recruiting</h3>
             <p>Thank you for applying to our Software Engineeering DevOps role at JPMorgan Chase. We're still reviewing your application and would get back...</p>
@@ -32,7 +32,7 @@ const Messages = () => {
           <span className="time">12 min</span>
         </li>
         <li className="message-item">
-          <img src="./images/rebirth_empowerment_logo.jpg" alt="Mentor Priyanka" className="avatar" />
+          <img src="/avatar.jpg" alt="Mentor Priyanka" className="avatar" />
           <div className="message-content">
             <h3>Mentor Priyanka</h3>
             <p>Hello! My name is Priyanka and I'm your assigned mentor at ReBirth Empowerment Education</p>
@@ -40,7 +40,7 @@ const Messages = () => {
           <span className="time">48 min</span>
         </li>
         <li className="message-item">
-          <img src="client\public\rebirth_empowerment_logo.jpg" alt="ReBirth Empowerment" className="avatar" />
+          <img src="/rebirth_empowerment_logo.jpg" alt="ReBirth Empowerment" className="avatar" />
           <div className="message-content">
             <h3>ReBirth Empowerment</h3>
             <p>Congratulations! You have recently activated your application portal at ReBirth Empowerment. Ensure to go through the resources tab to find ou...</p>
@@ -48,7 +48,7 @@ const Messages = () => {
           <span className="time">1 hour</span>
         </li>
         <li className="message-item">
-          <img src="client\public\rebirth_empowerment_logo.jpg" alt="ReBirth Empowerment" className="avatar" />
+          <img src="/rebirth_empowerment_logo.jpg" alt="ReBirth Empowerment" className="avatar" />
           <div className="message-content">
             <h3>ReBirth Empowerment</h3>
             <p>Your one-time activation code is 085-263</p>
