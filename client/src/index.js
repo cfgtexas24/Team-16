@@ -8,6 +8,7 @@ import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopme
 import HomePage from "./features/home/HomePage";
 import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterGenerator";
 import ResumeReviewer from "./features/resume-reviewer/Reviewer";
+import Resources from "./features/misc-resources/Resources";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
     element: <ProfileView />,
   },
   {
-    path: "/resume-dev",
+    path: "/resume-generator",
     element: <ViewDocInDevelopment />,
   },
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
       path: "/stocks",
       element: <Stocks />,
+  },
+  {
+      path: "/resources",
+      element: <Resources />,
   }
 ]);
 
