@@ -10,6 +10,7 @@ const employerRoutes = require('./routes/employerRoutes');
 const clientRoutes = require('./routes/clientRoutes');
 const jobRoutes = require('./routes/jobRoutes');
 
+
 app.use(cors());
 app.use(express.json());
 

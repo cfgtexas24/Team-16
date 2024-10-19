@@ -1,4 +1,5 @@
 const Employer = require('../models/employerModel');
+const Job = require('../models/jobModel');
 
 // Get all employers
 exports.getAllEmployers = async (req, res) => {
@@ -22,13 +23,52 @@ exports.createEmployer = async (req, res) => {
 };
 
 exports.getAllPositions = async (req, res) => {
-    try {
-      const employer = await Employer.findById(req.params.id).populate('listings');
-      if (!employer) {
-        return res.status(404).json({ message: 'Employer not found' });
-      }
-      res.status(200).json(employer.listings);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
+  try {
+    const employer = await Employer.findById(req.params.id).populate('listings');
+    if (!employer) {
+      return res.status(404).json({ message: 'Employer not found' });
     }
-  };
+    res.status(200).json(employer.listings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Get a single employer by ID
+exports.getEmployerById = async (req, res) => {
+  try {
+    const employer = await Employer.findById(req.params.id);
+    if (!employer) {
+      return res.status(404).json({ message: 'Employer not found' });
+    }
+    res.status(200).json(employer);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Update an employer
+exports.updateEmployer = async (req, res) => {
+  try {
+    const employer = await Employer.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!employer) {
+      return res.status(404).json({ message: 'Employer not found' });
+    }
+    res.status(200).json(employer);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// Delete an employer
+exports.deleteEmployer = async (req, res) => {
+  try {
+    const employer = await Employer.findByIdAndDelete(req.params.id);
+    if (!employer) {
+      return res.status(404).json({ message: 'Employer not found' });
+    }
+    res.status(200).json({ message: 'Employer deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
