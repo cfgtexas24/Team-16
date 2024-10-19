@@ -13,64 +13,8 @@
 }
 
 .App h1 {
-  color: #4CAF50; /* Green color */
+  color: #FFC107; /* Yellow color */
   margin-bottom: 20px;
 }
 
-.hero-text {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 20px;
-}
 
-.sign-in-form input[type="text"],
-.sign-in-form input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.sign-in-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #4CAF50; /* Green color */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.sign-in-form button:hover {
-  background-color: #45a049; /* Darker green on hover */
-}
-
-.signup-link,
-.additional-signin {
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.signup-link a,
-.additional-signin a {
-  color: #4CAF50; /* Green color */
-  text-decoration: none;
-}
-
-.signup-link a:hover,
-.additional-signin a:hover {
-  text-decoration: underline;
-}
-
-.additional-signin h3 {
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #333;
-}
-
-.additional-signin a {
-  display: block;
-  margin: 5px 0;
-}

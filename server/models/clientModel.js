@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
+
 const bcrypt = require('bcrypt');
+
 const Schema = mongoose.Schema
 
 const clientSchema = new Schema({
@@ -13,10 +15,12 @@ const clientSchema = new Schema({
         required: true
     },
     skills: {
+
         type: [String], // Array of strings for skills
         default: [] // Optional: default to an empty array
     },
     applied: { type: mongoose.Schema.Types.ObjectId, ref: 'Job', required: false}, // Reference to Job model
+
     phone: {
         type: String
     },
@@ -26,6 +30,7 @@ const clientSchema = new Schema({
     
     
 }, { timestamps: true })
+
 
 // Pre-save hook to hash the password before saving
 clientSchema.pre('save', async function (next) {
@@ -55,6 +60,7 @@ clientSchema.pre('save', async function (next) {
 clientSchema.methods.comparePassword = async function (enteredPassword) {
     return bcrypt.compare(enteredPassword, this.password);
 };
+
 
 
 module.exports = mongoose.model('Client', clientSchema)
