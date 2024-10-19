@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './DataPage.css'; // Importing the CSS file
+import AppLayout from "../../components/AppLayout";
 
 const graphs = [
   { id: 1, title: 'User Metrics', url: 'https://jpmc-team16.s3.us-east-2.amazonaws.com/Screenshot+2024-10-19+at+3.20.50%E2%80%AFAM.png', category: 'User' },
@@ -18,8 +19,8 @@ const DataPage = () => {
   };
 
   return (
+    <AppLayout title="Metrics Dashboard">
     <div className="data-page">
-      <h1 className="page-title">Metrics Dashboard</h1>
 
       {/* Render the graphs vertically with the titles above */}
       <div className="graph-container">
@@ -35,6 +36,7 @@ const DataPage = () => {
         ))}
       </div>
     </div>
+    </AppLayout>
   );
 };
 
