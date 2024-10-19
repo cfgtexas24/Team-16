@@ -1,0 +1,132 @@
+/* General container styling */
+.container {
+  max-width: 900px; /* Increased max width for desktop */
+  margin: 0 auto;   /* Center the container */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  font-size: 24px; /* Slightly larger font for desktop */
+  color: #333;
+  font-weight: bold;
+}
+
+.search-bar {
+  padding: 10px;
+  font-size: 16px; /* Larger font for better readability */
+  width: 300px;    /* Larger search bar */
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Message list styling */
+.message-list {
+  list-style: none;
+  padding: 0;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.message-item .avatar {
+  width: 50px; /* Larger avatar for desktop */
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.message-content {
+  flex-grow: 1;
+}
+
+.message-content h3 {
+  margin: 0;
+  font-size: 18px; /* Larger font for message name */
+  font-weight: bold;
+  color: #333;
+}
+
+.message-content p {
+  margin: 5px 0 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.time, .unread-count {
+  font-size: 14px; /* Adjusted size for better readability */
+  color: #888;
+}
+
+.unread-count {
+  background-color: #ff4b5c;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Footer styling */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+
+.footer-btn {
+  width: 50px;
+  height: 50px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-btn.active {
+  background-color: #ff4b5c;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%; /* Full width on smaller screens */
+    padding: 10px;
+  }
+
+  .search-bar {
+    width: 100%; /* Full width search bar */
+    font-size: 14px;
+  }
+
+  .message-item .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .message-content h3 {
+    font-size: 16px;
+  }
+
+  .message-content p {
+    font-size: 14px;
+  }
+}

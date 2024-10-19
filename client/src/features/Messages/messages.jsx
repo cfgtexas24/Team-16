@@ -1,5 +1,5 @@
 import React from 'react';
-import './Messages.css';  // Ensure you have the styles in this CSS file
+import './messages.css';  // Ensure you have the styles in this CSS file
 
 const Messages = () => {
   return (
