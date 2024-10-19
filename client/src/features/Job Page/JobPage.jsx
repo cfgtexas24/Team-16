@@ -11,38 +11,42 @@ const JobPage = () => {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [job, setJob] = useState([]);
   const [appliedJobs, setAppliedJobs] = useState({});
-  const [employers, setEmployers] = useState({}); // State to hold employer info
+  const [employers, setEmployers] = useState({}); // State to hold employer info)
+  
+  async function getJobsWithEmployers(jobs) {
+    // Fetch employer info for each job
+    const employerPromises = jobs.map(async (job) => {
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACKEND_URL +
+          `/api/employers/${job.employer}`
+        );
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch employer data for job ID: ${job.id}`
+          );
+        }
+        const employerData = await response.json();
+        console.log(response);
+        return { ...job, employerData }; // Attach employer data to job
+      } catch (err) {
+        console.error(err);
+        return { ...job, employerData: null }; // Return job without employer data on failure
+      }
+    });
 
+    const jobsWithEmployers = await Promise.all(employerPromises);
+    return jobsWithEmployers; // Update filteredJobs with employer data
+  }
+  
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         const jobs = await getJobs(); // Fetch jobs
         setJob(jobs); // Set job state
         setFilteredJobs(jobs); // Set filteredJobs to all jobs initially
-
-        // Fetch employer info for each job
-        const employerPromises = jobs.map(async (job) => {
-          try {
-            const response = await fetch(
-              process.env.REACT_APP_BACKEND_URL +
-                `/api/employers/${job.employer}`
-            );
-            if (!response.ok) {
-              throw new Error(
-                `Failed to fetch employer data for job ID: ${job.id}`
-              );
-            }
-            const employerData = await response.json();
-            console.log(response);
-            return { ...job, employerData }; // Attach employer data to job
-          } catch (err) {
-            console.error(err);
-            return { ...job, employerData: null }; // Return job without employer data on failure
-          }
-        });
-
-        const jobsWithEmployers = await Promise.all(employerPromises);
-        setFilteredJobs(jobsWithEmployers); // Update filteredJobs with employer data
+        
+        setFilteredJobs(await getJobsWithEmployers(jobs)); // Update filteredJobs with employer data
       } catch (error) {
         console.error("Error fetching jobs:", error);
       }
@@ -55,12 +59,14 @@ const JobPage = () => {
     setSelectedCategory(category);
     setIsDropdownOpen(false);
 
+    let jobs;
     if (category === "All") {
-      const jobs = await getJobs();
-      setFilteredJobs(jobs);
+      jobs = await getJobs();
     } else {
-      setFilteredJobs(await getJobsbyFeature(category));
+      jobs = await getJobsbyFeature(category);
     }
+    setFilteredJobs(jobs);
+    setFilteredJobs(await getJobsWithEmployers(jobs));
   };
 
   const handleApply = (id) => {
