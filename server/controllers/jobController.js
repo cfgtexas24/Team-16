@@ -87,7 +87,7 @@ exports.deleteJob = async (req, res) => {
 };
 
 exports.searchJobsByCategory = async (req, res) => {
-    const { category } = req.params;
+    const { category } = req.body;
 
     try {
         const jobs = await Job.find({ category });
@@ -97,21 +97,3 @@ exports.searchJobsByCategory = async (req, res) => {
     }
 };
 
-exports.searchJobs = async (req, res) => {
-    const { title, company, location, category, minPay, maxPay } = req.query;
-
-    try {
-        const query = {};
-        if (title) query.title = new RegExp(title, 'i'); 
-        if (company) query.company = new RegExp(company, 'i');
-        if (location) query.location = new RegExp(location, 'i');
-        if (category) query.category = category;
-        if (minPay) query.pay = { ...query.pay, $gte: minPay }; 
-        if (maxPay) query.pay = { ...query.pay, $lte: maxPay }; 
-
-        const jobs = await Job.find(query);
-        res.status(200).json(jobs);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
