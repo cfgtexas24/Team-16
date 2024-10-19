@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./features/login/LoginPage";
 import RegisterPage from "./features/register/RegisterPage";
+import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
 import HomePage from "./features/home/HomePage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/resume-dev",
+    element: <ViewDocInDevelopment />,
   },
   {
     path: "/home",

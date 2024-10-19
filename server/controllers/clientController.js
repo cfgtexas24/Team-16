@@ -167,3 +167,83 @@ exports.createClientApplications = async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 };
+
+exports.reviewResume = async (req, res) => {
+    const { resumeText } = req.body;
+    const { OPENAI_API_KEY } = process.env;
+
+    if (!resumeText) {
+        return res.status(400).json({ error: 'Resume text is required.' });
+    }
+
+    try {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${OPENAI_API_KEY}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: 'You are a resume reviewer. Provide detailed feedback on resumes.' },
+                    { role: 'user', content: `Please review the following resume:\n\n${resumeText} }` }
+                  ]
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to get a response from the API');
+        }
+
+        const data = await response.json();
+        const review = data.choices[0].message.content;
+        res.json({ review });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'An error occurred while reviewing the resume.' });
+    }
+};
+
+exports.coverLetter = async (req, res) => {
+    const { jobTitle, companyName, applicantName, skills } = req.body;
+
+    if (!jobTitle || !companyName || !applicantName || !skills) {
+        return res.status(400).json({ error: 'All fields are required: jobTitle, companyName, applicantName, and skills.' });
+    }
+    
+    const { OPENAI_API_KEY } = process.env;
+
+    try {
+        const prompt = `Write a professional cover letter for a job application. 
+        The applicant's name is ${applicantName}, applying for the position of ${jobTitle} at ${companyName}. 
+        Mention the following skills: ${skills}. 
+        Make sure the tone is professional and engaging.`;
+
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${OPENAI_API_KEY}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-3.5-turbo',
+                messages: [
+                    { role: 'system', content: 'You are an assistant that generates cover letters.' },
+                    { role: 'user', content: prompt }
+                ]
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to get a response from the API');
+        }
+
+        const data = await response.json();
+        const coverLetter = data.choices[0].message.content;
+        res.json({ coverLetter });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ error: 'An error occurred while generating the cover letter.' });
+    }
+};

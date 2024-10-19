@@ -24,6 +24,7 @@ export const fetchWithAuth = async (url, options) => {
   }
   return data;
 };
+<<<<<<< HEAD
 
 export const getJobs = async () => {
   const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/jobs/getJobs', {
@@ -69,6 +70,8 @@ export const getJobsbyFeature = async (category) => {
 };
 
 
+=======
+>>>>>>> b33203e49a657e11565d02db5baad11187790454
 export const login = async (email, password) => {
   const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/client/login', {
     method: 'POST',
@@ -80,14 +83,13 @@ export const login = async (email, password) => {
   const data = await response.json();
   if (response.status === 200) {
     localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
-    return data;
+    window.location.href = '/home'
   } else {
     if (data.error) {
       alert(data.error);
     } else {
       alert('An error occurred while logging in.');
     }
-    return null;
   }
 };
 
@@ -113,6 +115,7 @@ export const register = async (email, password) => {
 
 export const getDecodedToken = () => {
   const token = localStorage.getItem(LOCAL_STORAGE_JWT_KEY);
+  if (!token) return null;
   const body = token.split('.')[1];
   const decode = JSON.parse(atob(body));
   return decode
