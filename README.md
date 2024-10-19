@@ -5,10 +5,9 @@
 ### NPM installs 
 
 How to run server - npm run dev
-server package installs - npm install mongoose, express, cors, dotenv, nodemon
 
 How to run client - npm start
-client package installs - npm install 
+
 
 
 
