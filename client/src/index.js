@@ -4,6 +4,8 @@ import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./features/login/LoginPage";
 import RegisterPage from "./features/register/RegisterPage";
 import HomePage from "./features/home/HomePage";
+import AdminDataPage from "./features/AdminDataPage/DataPage";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <HomePage />,
+  },
+  {
+    path: "/admin",
+    element: <AdminDataPage />,
   },
 ]);
 
