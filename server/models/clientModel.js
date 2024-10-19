@@ -15,7 +15,6 @@ const clientSchema = new Schema({
         required: true
     },
     skills: {
-
         type: [String], // Array of strings for skills
         default: [] // Optional: default to an empty array
     },

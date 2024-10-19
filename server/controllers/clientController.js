@@ -116,3 +116,21 @@ async function fetchJobsByCategory(category) {
         throw new Error('Failed to fetch jobs'); // Throw error to be handled in the controller
     }
 }
+
+exports.getProfile = async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const client = await Client.findOne({ email }).select('-password');
+        
+        if (!client) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        res.status(200).json(client);
+        
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+};
