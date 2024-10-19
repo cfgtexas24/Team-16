@@ -28,8 +28,7 @@ exports.loginClient = async (req, res) => {
             return res.status(401).json({error: "Incorrect password"})
         }
         const token = jwt.sign({
-            email: client.email,
-            password: client.password
+            email: client.email
         },
         process.env.token
 
