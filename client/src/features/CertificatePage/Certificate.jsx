@@ -1,6 +1,7 @@
 import React from "react";
 import "./Certificate.css";
 import AppLayout from "../../components/AppLayout";
+import halfFullBar from "./bar.png"; // Ensure this is your new transparent image
 
 const CertificatePage = () => {
   return (
@@ -27,8 +28,10 @@ const CertificatePage = () => {
             creating meaningful visualizations, and more. At under 10 hours per
             week, you can complete the certificate in less than 6 months.
           </p>
+          
         </div>
-
+        
+        {/* Other certificates without the image */}
         <div className="certificate">
           <h2>Google Project Management Certificate</h2>
           <p>
@@ -70,6 +73,7 @@ const CertificatePage = () => {
             jobs with Google and over 150 U.S. employers, including Deloitte,
             Target, Verizon, and of course, Google.
           </p>
+          <img src={halfFullBar} alt="Half Full Bar" className="progress-bar" />
         </div>
       </div>
     </AppLayout>

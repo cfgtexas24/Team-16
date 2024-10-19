@@ -34,3 +34,11 @@ p {
     line-height: 1.6;
     color: #555;
 }
+.progress-bar {
+    width: 50%; /* Adjust the width as necessary */
+    height: auto; /* Maintains aspect ratio */
+    margin: 10px 0; /* Space above and below the image */
+    display: block; /* Ensures it's treated as a block element */
+    margin-left: auto; /* Centers the image */
+    margin-right: auto; /* Centers the image */
+}
