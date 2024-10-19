@@ -1,6 +1,8 @@
 const Job = require('../models/jobModel');
 const Employer = require('../models/employerModel');
+require('dotenv').config();
 
+// Combined addJob and createJob
 exports.addJob = async (req, res) => {
   try {
     const employerId = req.params.id;
@@ -34,6 +36,7 @@ exports.addJob = async (req, res) => {
   }
 };
 
+// Updated deleteJob to include employer update
 exports.deleteJob = async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -81,15 +84,40 @@ exports.getJobById = async (req, res) => {
   }
 };
 
-// Update a job
+// Updated updateJob to include more fields
 exports.updateJob = async (req, res) => {
+  const { id } = req.params;
+  const { title, description, company, location, pay, category, workHours } = req.body;
+
   try {
-    const job = await Job.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const job = await Job.findById(id);
     if (!job) {
-      return res.status(404).json({ message: 'Job not found' });
+      return res.status(404).json({ message: "Job not found" });
     }
-    res.status(200).json(job);
+
+    if (title) job.title = title;
+    if (description) job.description = description;
+    if (company) job.company = company;
+    if (location) job.location = location;
+    if (pay) job.pay = pay;
+    if (category) job.category = category;
+    if (workHours) job.workHours = workHours;
+
+    await job.save();
+    res.status(200).json({ message: "Job updated successfully", job });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Added searchJobsByCategory
+exports.searchJobsByCategory = async (req, res) => {
+  const { category } = req.body;
+
+  try {
+    const jobs = await Job.find({ category });
+    res.status(200).json(jobs);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
