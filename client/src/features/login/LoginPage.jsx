@@ -23,7 +23,7 @@ function LoginPage() {
       <form className="sign-in-form" onSubmit={handleSubmit}>
         <input 
           type="text" 
-          placeholder="Enter your userhuiojouname" 
+          placeholder="Enter your username" 
           value={username} 
           onChange={(e) => setUsername(e.target.value)} 
           required 
