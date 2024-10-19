@@ -6,4 +6,6 @@ router.post('/', clientController.createClient);
 router.post('/login',clientController.loginClient)
 router.post('/getJobs',clientController.getJobs)
 router.post('/editProfile', clientController.editProfile)
+router.post('/getApplications',clientController.getClientApplications)
+router.post('/createApplication', clientController.createClientApplications)
 module.exports = router;

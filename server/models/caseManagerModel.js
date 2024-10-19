@@ -46,7 +46,7 @@ caseManagerSchema.methods.comparePassword = async function (enteredPassword) {
 
 
 
-const Admin = mongoose.model('Admin', adminSchema);
+
 
 
 const CaseManager = mongoose.model('CaseManager', caseManagerSchema);

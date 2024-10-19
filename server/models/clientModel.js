@@ -36,7 +36,15 @@ const clientSchema = new Schema({
             type: String,
         }
       }],
-    applied: { type: mongoose.Schema.Types.ObjectId, ref: 'Job', required: false}, // Reference to Job model
+    applied: [{ 
+        job_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Job'
+          },
+          status: {
+            type: String,
+          }
+    }], // Reference to Job model
 
     phone: {
         type: String
