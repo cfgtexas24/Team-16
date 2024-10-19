@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./home.css";
 import TopBar from "../../components/topbar";
 import SideBar from "../../components/sidebar_mobile";
@@ -13,9 +14,14 @@ function HomePage() {
   
   }, [])
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen); // Toggle the sidebar state
+  };
+
+  const handleProfileClick = () => {
+    navigate('/profile'); // Navigate to ProfileView
   };
 
   return (
@@ -43,6 +49,7 @@ function HomePage() {
         <button
           className="m-4 p-4 px-6 text-2xl text-gray-300 rounded-3xl"
           style={{ backgroundColor: "#495195" }}
+          onClick={handleProfileClick} // Add onClick handler
         >
           Profile
         </button>
@@ -68,6 +75,7 @@ function HomePage() {
         <button
           className="m-4 p-4 px-6 text-2xl text-gray-300 rounded-3xl"
           style={{ backgroundColor: "#495195" }}
+          onClick={handleProfileClick} // Add onClick handler
         >
           Profile
         </button>

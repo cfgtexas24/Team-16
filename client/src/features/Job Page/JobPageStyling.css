@@ -1,7 +1,7 @@
 /* General job page styling */
 .job-page {
   width: 100%;
-  max-width: 400px; /* This will limit the width of the component to 400px, similar to a mobile screen */
+  max-width: 400px;
   margin: 0 auto;
   padding: 15px;
   font-family: Arial, sans-serif;

@@ -6,8 +6,17 @@ import RegisterPage from "./features/register/RegisterPage";
 import ProfileView from "./components/profileView";
 import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
 import HomePage from "./features/home/HomePage";
+
 import EmployeeLoginPage from "./features/login/EmployeeLoginPage"
 import MentorLoginPage from "./features/login/MentorLoginPage";
+
+
+import AdminDataPage from "./features/AdminDataPage/DataPage";
+
+import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterGenerator";
+import ResumeReviewer from "./features/resume-reviewer/Reviewer";
+import Resources from "./features/misc-resources/Resources";
+import BudgetGame from "./features/budget-game/BudgetGame";
 
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -15,7 +24,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import './App.css';
 import JobPage from './features/Job Page/JobPage';
+
 import AdminLoginPage from "./features/login/AdminLoginPage";
+
+import Stocks from './features/stocks/Stocks';
+
 
 const router = createBrowserRouter([
   {
@@ -36,7 +49,7 @@ const router = createBrowserRouter([
     element: <ProfileView />,
   },
   {
-    path: "/resume-dev",
+    path: "/resume-generator",
     element: <ViewDocInDevelopment />,
   },
   {
@@ -44,6 +57,7 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
+
     path: "/employer-signin",
     element: <EmployeeLoginPage />,
   },
@@ -54,6 +68,30 @@ const router = createBrowserRouter([
   {
     path: "/admin-signin",
     element: <AdminLoginPage />,
+
+    path: "/admin",
+    element: <AdminDataPage />,
+  },
+  {
+    path: "/cover-letter-generator",
+    element: <CoverLetterGenerator />,
+  },
+  {
+    path: "/resume-reviewer",
+    element: <ResumeReviewer />,
+  },
+  {
+      path: "/stocks",
+      element: <Stocks />,
+  },
+  {
+      path: "/resources",
+      element: <Resources />,
+  },
+  {
+    path: '/budget-game',
+    element: <BudgetGame />,
+
   }
 ]);
 

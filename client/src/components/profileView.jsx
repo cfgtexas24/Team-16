@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { fetchWithAuth } from '../lib/auth';
 import { getDecodedToken } from '../lib/auth';
+import { useNavigate } from 'react-router-dom';
+import {
+  Button,
+  TextField,
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  Grid,
+  IconButton,
+} from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function ProfileView() {
   const [profile, setProfile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editedProfile, setEditedProfile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProfile();
@@ -85,110 +99,184 @@ function ProfileView() {
     setEditedProfile({ ...editedProfile, experiences: updatedExperiences });
   };
 
+  const handleGoBack = () => {
+    navigate('/home');
+  };
+
   if (!profile) return <div>Loading...</div>;
 
   return (
-    <div className="profile-view">
-      <h2>Profile</h2>
-      {isEditing ? (
-        <div>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={editedProfile.email}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Phone:
-            <input
-              type="tel"
-              name="phone"
-              value={editedProfile.phone}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            LinkedIn:
-            <input
-              type="url"
-              name="linkedin"
-              value={editedProfile.linkedin}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Skills (comma-separated):
-            <input
-              type="text"
-              name="skills"
-              value={editedProfile.skills.join(', ')}
-              onChange={(e) => setEditedProfile({ ...editedProfile, skills: e.target.value.split(', ') })}
-            />
-          </label>
-          <h3>Experiences</h3>
-          {editedProfile.experiences.map((exp, index) => (
-            <div key={index} className="experience-entry">
-              <input
-                type="text"
-                placeholder="Employer Name"
-                value={exp.employerName}
-                onChange={(e) => handleExperienceChange(index, 'employerName', e.target.value)}
+    <Card variant="outlined" sx={{ maxWidth: 800, margin: 'auto', mt: 4, p: 2 }}>
+      <CardContent>
+        <Typography variant="h4" gutterBottom>
+          Profile
+        </Typography>
+        <Button onClick={handleGoBack} variant="outlined" sx={{ mb: 2 }}>
+          Back to Home
+        </Button>
+        {isEditing ? (
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email"
+                name="email"
+                value={editedProfile.email}
+                onChange={handleChange}
+                variant="outlined"
               />
-              <input
-                type="text"
-                placeholder="Role Name"
-                value={exp.roleName}
-                onChange={(e) => handleExperienceChange(index, 'roleName', e.target.value)}
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Phone"
+                name="phone"
+                value={editedProfile.phone}
+                onChange={handleChange}
+                variant="outlined"
               />
-              <textarea
-                placeholder="Description"
-                value={exp.description}
-                onChange={(e) => handleExperienceChange(index, 'description', e.target.value)}
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="LinkedIn"
+                name="linkedin"
+                value={editedProfile.linkedin}
+                onChange={handleChange}
+                variant="outlined"
               />
-              <input
-                type="text"
-                placeholder="Start Date"
-                value={exp.startDate}
-                onChange={(e) => handleExperienceChange(index, 'startDate', e.target.value)}
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Skills (comma-separated)"
+                name="skills"
+                value={editedProfile.skills.join(', ')}
+                onChange={(e) =>
+                  setEditedProfile({ ...editedProfile, skills: e.target.value.split(', ') })
+                }
+                variant="outlined"
               />
-              <input
-                type="text"
-                placeholder="End Date"
-                value={exp.endDate}
-                onChange={(e) => handleExperienceChange(index, 'endDate', e.target.value)}
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Name"
+                name="name"
+                value={editedProfile.name}
+                onChange={handleChange}
+                variant="outlined"
               />
-              <button onClick={() => removeExperience(index)}>Remove</button>
-            </div>
-          ))}
-          <button onClick={addExperience}>Add Experience</button>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h6" gutterBottom>
+                Experiences
+              </Typography>
+              {editedProfile.experiences.map((exp, index) => (
+                <Grid container spacing={2} key={index} alignItems="center">
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      label="Employer Name"
+                      value={exp.employerName}
+                      onChange={(e) => handleExperienceChange(index, 'employerName', e.target.value)}
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      label="Role Name"
+                      value={exp.roleName}
+                      onChange={(e) => handleExperienceChange(index, 'roleName', e.target.value)}
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label="Description"
+                      value={exp.description}
+                      onChange={(e) => handleExperienceChange(index, 'description', e.target.value)}
+                      variant="outlined"
+                      multiline
+                      rows={3}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      label="Start Date"
+                      value={exp.startDate}
+                      onChange={(e) => handleExperienceChange(index, 'startDate', e.target.value)}
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      fullWidth
+                      label="End Date"
+                      value={exp.endDate}
+                      onChange={(e) => handleExperienceChange(index, 'endDate', e.target.value)}
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <IconButton
+                      aria-label="delete experience"
+                      onClick={() => removeExperience(index)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Grid>
+                </Grid>
+              ))}
+              <Button
+                startIcon={<AddCircleOutlineIcon />}
+                onClick={addExperience}
+                variant="outlined"
+                sx={{ mt: 2 }}
+              >
+                Add Experience
+              </Button>
+            </Grid>
+          </Grid>
+        ) : (
           <div>
-            <button onClick={handleSave}>Save</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <Typography>Email: {profile.email}</Typography>
+            <Typography>Phone: {profile.phone}</Typography>
+            <Typography>LinkedIn: {profile.linkedin}</Typography>
+            <Typography>Skills: {profile.skills.join(', ')}</Typography>
+            <Typography>Name: {profile.name}</Typography>
+            <Typography variant="h6" gutterBottom>
+              Experiences
+            </Typography>
+            {profile.experiences.map((exp, index) => (
+              <Card variant="outlined" key={index} sx={{ mb: 2, p: 2 }}>
+                <Typography>Employer: {exp.employerName}</Typography>
+                <Typography>Role: {exp.roleName}</Typography>
+                <Typography>Description: {exp.description}</Typography>
+                <Typography>Start Date: {exp.startDate}</Typography>
+                <Typography>End Date: {exp.endDate}</Typography>
+              </Card>
+            ))}
+            <Button onClick={handleEdit} variant="contained" sx={{ mt: 2 }}>
+              Edit Profile
+            </Button>
           </div>
-        </div>
-      ) : (
-        <div>
-          <p>Email: {profile.email}</p>
-          <p>Phone: {profile.phone}</p>
-          <p>LinkedIn: {profile.linkedin}</p>
-          <p>Skills: {profile.skills.join(', ')}</p>
-          <h3>Experiences</h3>
-          {profile.experiences.map((exp, index) => (
-            <div key={index} className="experience-entry">
-              <p>Employer: {exp.employerName}</p>
-              <p>Role: {exp.roleName}</p>
-              <p>Description: {exp.description}</p>
-              <p>Start Date: {exp.startDate}</p>
-              <p>End Date: {exp.endDate}</p>
-            </div>
-          ))}
-          <button onClick={handleEdit}>Edit Profile</button>
-        </div>
+        )}
+      </CardContent>
+      {isEditing && (
+        <CardActions>
+          <Button onClick={handleSave} variant="contained" color="primary">
+            Save
+          </Button>
+          <Button onClick={handleCancel} variant="outlined" color="secondary">
+            Cancel
+          </Button>
+        </CardActions>
       )}
-    </div>
+    </Card>
   );
 }
 
