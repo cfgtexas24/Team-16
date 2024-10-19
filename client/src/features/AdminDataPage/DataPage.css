@@ -1,15 +1,14 @@
 /* General styling for the data page */
 .data-page {
   width: 100%;
-  max-width: 400px; /* Max width for mobile aspect ratio */
+  max-width: 550px; /* Max width for mobile aspect ratio */
   margin: 0 auto;
   padding: 15px;
-  font-family: Arial, sans-serif;
   text-align: center;
 }
 
 .page-title {
-  font-size: 24px;
+  font-size: 35px;
   color: #333;
   margin-bottom: 20px;
 }
@@ -24,8 +23,8 @@
 
 /* Small graph style */
 .graph.small {
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -47,7 +46,7 @@
 
 /* Graph title */
 .graph-title {
-  font-size: 16px;
+  font-size: 25px;
   color: #666;
   margin-bottom: 10px;
 }

@@ -1,5 +1,5 @@
 // TODO: styles in this file conflict with styles in the other files and changes layout on other pages. need to fix
-// import './messages.css'
+import './messages.css'
 
 function Messages() { 
   return (
