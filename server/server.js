@@ -4,10 +4,19 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 
+
 const app = express();
+const employerRoutes = require('./routes/employerRoutes');
+const clientRoutes = require('./routes/clientRoutes');
+
 
 app.use(cors());
 app.use(express.json());
+
+
+
+app.use('/api/employers', employerRoutes);
+app.use('/api/client', clientRoutes);
 
 
 // Listen for requests
@@ -24,3 +33,8 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((error) => {
         console.error(error)
     })
+
+
+
+
+// ... other app configurations ...
