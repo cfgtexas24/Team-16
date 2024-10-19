@@ -6,12 +6,16 @@ import RegisterPage from "./features/register/RegisterPage";
 import ProfileView from "./components/profileView";
 import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
 import HomePage from "./features/home/HomePage";
+import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterGenerator";
+import ResumeReviewer from "./features/resume-reviewer/Reviewer";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import './App.css';
 import JobPage from './features/Job Page/JobPage';
+import Stocks from './features/stocks/Stocks';
+
 
 const router = createBrowserRouter([
   {
@@ -39,6 +43,18 @@ const router = createBrowserRouter([
     path: "/home",
     element: <HomePage />,
   },
+  {
+    path: "/cover-letter-generator",
+    element: <CoverLetterGenerator />,
+  },
+  {
+    path: "/resume-reviewer",
+    element: <ResumeReviewer />,
+  },
+  {
+      path: "/stocks",
+      element: <Stocks />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
