@@ -14,13 +14,14 @@ import AppLayout from "./features/home/HomePage";
 import EmployeeLoginPage from "./features/login/EmployeeLoginPage";
 import MentorLoginPage from "./features/login/MentorLoginPage";
 import Header from "./components/topbar";
-
+import CertificatePage from "./features/CertificatePage/Certificate";
 import AdminDataPage from "./features/AdminDataPage/DataPage";
 
 import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterGenerator";
 import ResumeReviewer from "./features/resume-reviewer/Reviewer";
 import Resources from "./features/misc-resources/Resources";
 import BudgetGame from "./features/budget-game/BudgetGame";
+import Messages from "./features/messages/Messages";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -102,6 +103,10 @@ const router = createBrowserRouter([
   {
     path: "/budget-game",
     element: <BudgetGame />,
+  },
+  {
+    path: "/certifications",
+    element: <CertificatePage />,
   },
 ]);
 
