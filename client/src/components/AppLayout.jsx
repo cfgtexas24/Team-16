@@ -64,7 +64,7 @@ function AppLayout({children, title}) {
       <Navbar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div className="content py-4">
         <h2
-          className="text-2xl lg:text-4xl text-black font-bold p-10 lg:p-20"
+          className="text-2xl lg:text-4xl text-black font-bold p-10 lg:p-10 text-center"
           style={{ backgroundColor: "#F6C344" }}
         >
           {title}

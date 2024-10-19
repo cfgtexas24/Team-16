@@ -22,6 +22,7 @@ import ResumeReviewer from "./features/resume-reviewer/Reviewer";
 import Resources from "./features/misc-resources/Resources";
 import BudgetGame from "./features/budget-game/BudgetGame";
 import Messages from "./features/messages/Messages";
+import TrainingModule from "./features/Training/training";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
   {
     path: "/messages",
     element: <Messages />,
+  },
+  {
+    path: "/training", // Add the new route for TrainingModule
+    element: <TrainingModule />,
   },
 ]);
 
