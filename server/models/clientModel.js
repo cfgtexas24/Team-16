@@ -13,8 +13,8 @@ const clientSchema = new Schema({
         required: true
     },
     skills: {
-        type: Map,
-        of: Number
+        type: [String], // Array of strings for skills
+        default: [] // Optional: default to an empty array
     },
     applied: { type: mongoose.Schema.Types.ObjectId, ref: 'Job', required: false}, // Reference to Job model
     phone: {
