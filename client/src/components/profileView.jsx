@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { fetchWithAuth } from '../lib/auth';
 import { getDecodedToken } from '../lib/auth';
+import { useNavigate } from 'react-router-dom';
 
 function ProfileView() {
   const [profile, setProfile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editedProfile, setEditedProfile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProfile();
@@ -85,11 +87,16 @@ function ProfileView() {
     setEditedProfile({ ...editedProfile, experiences: updatedExperiences });
   };
 
+  const handleGoBack = () => {
+    navigate('/home');
+  };
+
   if (!profile) return <div>Loading...</div>;
 
   return (
     <div className="profile-view">
       <h2>Profile</h2>
+      <button onClick={handleGoBack} className="back-button">Back to Home</button>
       {isEditing ? (
         <div>
           <label>
