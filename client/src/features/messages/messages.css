@@ -1,126 +1,156 @@
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: #e5e5e5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 20px;
-}
-
+/* General container styling */
 .container {
-  background-color: #ffffff;
-  width: 375px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px; /* Increased max width for desktop */
+  margin: 0 auto;   /* Center the container */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Header styling */
 .header {
-  background-color: #ffffff;
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .header h2 {
-  font-size: 24px;
+  font-size: 24px; /* Slightly larger font for desktop */
+  color: #333;
   font-weight: bold;
-  margin-bottom: 10px;
-} */
-
-.search-bar {
-  width: 100%;
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid #0a0a0ae8;
-  background-color: #ffda06;
-  outline: none;
 }
 
+/* Styling for the search bar container */
+.search-bar {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border-radius: 20px;
+  border: none;
+  background-color: #F5C842; /* Yellow color */
+  color: #000; /* Dark text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the unread count */
+.unread-count {
+  background-color: #F5C842; /* Yellow color */
+  color: #F5C842;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-left: 10px;
+  display: inline-block;
+  text-align: center;
+  min-width: 24px; /* To make sure the circle appears even with 1 digit */
+}
+
+/* Message list styling */
 .message-list {
   list-style: none;
-  padding: 15px;
-  overflow-y: auto;
-  max-height: 400px;
+  padding: 0;
 }
 
 .message-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #f8f8f8;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
 }
 
 .message-item .avatar {
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
+  width: 50px; /* Larger avatar for desktop */
+  height: 50px;
   border-radius: 50%;
+  margin-right: 20px;
 }
 
 .message-content {
-  flex: 1;
-  margin-left: 10px;
+  flex-grow: 1;
 }
 
 .message-content h3 {
-  font-size: 16px;
+  margin: 0;
+  font-size: 18px; /* Larger font for message name */
   font-weight: bold;
   color: #333;
-  margin-bottom: 5px;
 }
 
 .message-content p {
-  font-size: 14px;
-  color: #777;
+  margin: 5px 0 0;
+  font-size: 16px;
+  color: #555;
 }
 
-.time {
-  font-size: 12px;
-  color: #aaa;
-  margin-right: 10px;
+.time, .unread-count {
+  font-size: 14px; /* Adjusted size for better readability */
+  color: #888;
 }
 
 .unread-count {
-  background-color: #ffd700;
-  color: white;
-  padding: 5px 8px;
+  background-color: #ff4b5c;
+  color: #fff;
+  padding: 5px 10px;
   border-radius: 50%;
-  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
 }
 
+/* Footer styling */
+/* Footer styling */
 .footer {
   display: flex;
   justify-content: space-around;
-  background-color: #ffffff;
   padding: 10px 0;
-  border-top: 1px solid #e5e5e5;
+  margin-top: 20px;
 }
 
 .footer-btn {
-  width: 40px;
-  height: 40px;
-  background-color: #f8f8f8;
+  width: 50px;
+  height: 50px;
+  background-color: #ffcc00; /* Background color for buttons */
   border: none;
   border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-btn svg {
+  color: #333; /* Icon color */
 }
 
 .footer-btn.active {
-  background-color: #ffd700;
+  background-color: #ff4b5c; /* Active button color */
 }
 
-.footer-btn:hover {
-  background-color: #ffc700;
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%; /* Full width on smaller screens */
+    padding: 10px;
+  }
+
+  .search-bar {
+    width: 100%; /* Full width search bar */
+    font-size: 14px;
+  }
+
+  .message-item .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .message-content h3 {
+    font-size: 16px;
+  }
+
+  .message-content p {
+    font-size: 14px;
+  }
 }
