@@ -12,6 +12,7 @@ const jobRoutes = require('./routes/jobRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const mentorRoutes = require('./routes/caseManagerRoutes')
 
+
 app.use(cors());
 app.use(express.json());
 
