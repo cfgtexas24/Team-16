@@ -1,16 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./features/login/LoginPage";
 import RegisterPage from "./features/register/RegisterPage";
+import HomePage from "./features/home/HomePage";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
-import './App.css';
+import "./App.css";
 
 const router = createBrowserRouter([
   {
@@ -20,10 +18,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
-  }
+  },
+  {
+    path: "/home",
+    element: <HomePage />,
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <div className="App">

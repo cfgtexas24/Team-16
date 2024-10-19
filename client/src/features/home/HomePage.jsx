@@ -41,19 +41,19 @@ function HomePage() {
       </div>
       <div className="hidden sm:flex items-center justify-between top-0 left-0 right-0 z-10 p-4">
         <div className="flex space-x-8 pl-16">
-          <button className="bg-transparent text-2xl text-black p-2 rounded hover:bg-[#495195] hover:text-gray-300">
+          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
             Home
           </button>
-          <button className="bg-transparent text-2xl text-black p-2 rounded hover:bg-[#495195] hover:text-gray-300">
+          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
             Jobs
           </button>
-          <button className="bg-transparent text-2xl text-black p-2 rounded hover:bg-[#495195] hover:text-gray-300">
+          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
             Messages
           </button>
-          <button className="bg-transparent text-2xl text-black p-2 rounded hover:bg-[#495195] hover:text-gray-300">
+          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
             Training
           </button>
-          <button className="bg-transparent text-2xl text-black p-2 rounded hover:bg-[#495195] hover:text-gray-300">
+          <button className="bg-transparent text-2xl text-black p-4 rounded hover:bg-[#495195] hover:text-gray-300">
             Certifications
           </button>
         </div>{" "}
