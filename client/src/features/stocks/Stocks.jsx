@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUpCircle, ArrowDownCircle, DollarSign } from 'lucide-react';
 import StockList from './StockList';
 import Portfolio from './Portfolio';
+import AppLayout from "../../components/AppLayout";
 
 // Custom Alert component
 const Alert = ({ type, message }) => (
@@ -82,6 +83,7 @@ const App = () => {
     };
 
     return (
+        <AppLayout title="Career Tools"> {/* Wrap the content in AppLayout */}
         <div className="container mx-auto p-4">
             <h1 className="text-4xl font-bold mb-6 text-center" style={{ color: '#ffc107' }}>Stock Market Simulator</h1>
             <div className="flex items-center justify-center mb-6">
@@ -96,6 +98,7 @@ const App = () => {
                 <Portfolio portfolio={portfolio} sellStock={sellStock} stocks={stocks} />
             </div>
         </div>
+        </AppLayout>
     );
 };
 

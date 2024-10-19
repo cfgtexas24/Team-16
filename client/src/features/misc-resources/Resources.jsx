@@ -19,7 +19,7 @@ const LinksPage = () => {
             </a>
           </div>
           <div className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-semibold mb-2">Budget Simulator</h2>
+            <h2 className="text-xl font-semibold mb-2"><span className="text-4xl">💰</span> Budget Simulator</h2>
             <p className="text-gray-600 mb-4">
               Practice budgeting and saving money by simulating your expenses.
             </p>
@@ -77,7 +77,7 @@ const LinksPage = () => {
         <h1 className="text-3xl font-bold my-6">Admin Tools</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow">
-            <h2 className="text-xl font-semibold mb-2">Metrics Dashboard</h2>
+            <h2 className="text-xl font-semibold mb-2"><span className="text-4xl">🚀</span> Metrics Dashboard</h2>
             <p className="text-gray-600 mb-4">
               Find out the progress of your clients and track their progress towards
               their goals.
