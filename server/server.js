@@ -19,6 +19,7 @@ app.use(express.json());
 app.use('/api/employers', employerRoutes);
 app.use('/api/client', clientRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Listen for requests
 app.listen(process.env.PORT, () => {

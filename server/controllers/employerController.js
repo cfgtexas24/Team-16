@@ -28,6 +28,36 @@ exports.getAllPositions = async (req, res) => {
     if (!employer) {
       return res.status(404).json({ message: 'Employer not found' });
     }
+
+  };
+
+  exports.loginEmployer = async (req, res) => {
+    const {email, password} = req.body
+    
+    try {
+        const employer = await Employer.findOne({email: email})
+        if (!employer) {
+            return res.status(400).json({error: "User not found"})
+        }
+        const isMatch = await employer.comparePassword(password)
+        if (!isMatch) {
+            return res.status(401).json({error: "Incorrect password"})
+        }
+        const token = jwt.sign({
+            email: employer.email,
+            user: "employer"
+        },
+        process.env.token
+
+    )
+        
+        
+        return res.json({status: 200, token: token})
+    } catch(err){
+        res.json(500).json({error: "Server error"})
+    }
+}
+
     res.status(200).json(employer.listings);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -72,3 +102,4 @@ exports.deleteEmployer = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+

@@ -19,7 +19,6 @@ exports.loginClient = async (req, res) => {
     
     try {
         const client = await Client.findOne({email: email})
-        console.log(client)
         if (!client) {
             return res.status(400).json({error: "User not found"})
         }
@@ -28,7 +27,8 @@ exports.loginClient = async (req, res) => {
             return res.status(401).json({error: "Incorrect password"})
         }
         const token = jwt.sign({
-            email: client.email
+            email: client.email,
+            user: "client"
         },
         process.env.token
 
