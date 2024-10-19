@@ -25,6 +25,50 @@ export const fetchWithAuth = async (url, options) => {
   return data;
 };
 
+export const getJobs = async () => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/jobs/getJobs', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  if (response.status === 200) {
+    console.log(data)
+    return data;
+  } else {
+    if (data.error) {
+      alert(data.error);
+    } else {
+      alert('An while trying to get jobs.');
+    }
+    return null;
+  }
+};
+
+export const getJobsbyFeature = async (category) => {
+  const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/jobs/searchBySkill', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ category }),
+  });
+  const data = await response.json();
+  if (response.status === 200) {
+    console.log(data)
+    return data;
+  } else {
+    if (data.error) {
+      alert(data.error);
+    } else {
+      alert('An while trying to get jobs.');
+    }
+    return null;
+  }
+};
+
+
 export const login = async (email, password) => {
   const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/client/login', {
     method: 'POST',
