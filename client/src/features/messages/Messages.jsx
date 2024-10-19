@@ -1,8 +1,11 @@
 // TODO: styles in this file conflict with styles in the other files and changes layout on other pages. need to fix
 import './messages.css'
+import AppLayout from "../../components/AppLayout";
+
 
 function Messages() { 
   return (
+  <AppLayout title="Messages"> {/* Wrap the content in AppLayout */}
   <div class="container">
       <header class="header">
           <h2>Message</h2>
@@ -57,6 +60,7 @@ function Messages() {
           <button class="footer-btn settings-btn"></button>
       </footer>
   </div>
+  </AppLayout>
   )
 }
 

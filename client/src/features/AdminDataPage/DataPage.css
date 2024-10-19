@@ -1,69 +1,58 @@
-/* General styling for the data page */
-.data-page {
-  width: 100%;
-  max-width: 550px; /* Max width for mobile aspect ratio */
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 15px;
-  text-align: center;
 }
 
-.page-title {
-  font-size: 35px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-/* Graph container */
-.graph-container {
-  display: flex;
-  flex-direction: column; /* Arrange items vertically */
-  align-items: center;
-  gap: 20px; /* Space between graphs */
-}
-
-/* Small graph style */
-.graph.small {
-  width: 300px;
-  height: 300px;
+.graph-card {
+  position: relative;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Enlarged graph style */
-.graph.enlarged {
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.graph-card:hover {
+  transform: scale(1.02);
 }
 
-/* Graph image */
+.graph-card.enlarged {
+  grid-column: span 2; /* Takes up 2 columns when enlarged */
+}
+
 .graph-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
 }
 
-/* Graph title */
 .graph-title {
-  font-size: 25px;
-  color: #666;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-/* Responsiveness */
+.icon-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .graph-card.enlarged {
+    grid-column: span 1; /* Takes up 1 column on mobile */
+  }
+}
+
 @media only screen and (max-width: 400px) {
-  .graph-container {
-    flex-direction: column;
-    align-items: center;
+  .graph-card {
+    width: 100%;
   }
 
-  .graph.small {
-    width: 80px;
-    height: 80px;
-  }
-
-  .graph.enlarged {
+  .graph-card.enlarged {
     width: 100%;
   }
 }

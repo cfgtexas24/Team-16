@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { User, Briefcase, Building2, List, Send } from 'lucide-react';
+import AppLayout from "../../components/AppLayout";
 
 const CoverLetterGenerator = () => {
     const [applicantName, setApplicantName] = useState('');
@@ -55,6 +56,7 @@ const CoverLetterGenerator = () => {
     );
 
     return (
+        <AppLayout title="Career Tools"> {/* Wrap the content in AppLayout */}
         <div className="container mx-auto p-4">
             <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: '#ffc107' }}>Cover Letter Generator</h2>
             <div className="bg-white p-6 rounded-lg shadow-lg mb-6">
@@ -119,6 +121,7 @@ const CoverLetterGenerator = () => {
                 </div>
             )}
         </div>
+        </AppLayout>
     );
 };
 

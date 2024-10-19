@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, Trash2 } from 'lucide-react';
+import AppLayout from "../../components/AppLayout";
 
 const BudgetGame = () => {
     const [weeklyIncome] = useState(500);
@@ -54,6 +55,7 @@ const BudgetGame = () => {
     };
 
     return (
+      <AppLayout title="Career Tools"> {/* Wrap the content in AppLayout */}
         <div className="container mx-auto p-4">
             <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: '#ffc107' }}>Budget Game</h2>
 
@@ -113,6 +115,7 @@ const BudgetGame = () => {
                 </ul>
             </div>
         </div>
+        </AppLayout>
     );
 };
 

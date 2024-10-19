@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { FileText, Send } from 'lucide-react';
+import AppLayout from "../../components/AppLayout";
 
 const ResumeReviewer = () => {
     const [resumeText, setResumeText] = useState('');
@@ -36,6 +37,7 @@ const ResumeReviewer = () => {
     };
 
     return (
+        <AppLayout title="Career Tools"> {/* Wrap the content in AppLayout */}
         <div className="container mx-auto p-4">
             <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: '#ffc107' }}>Resume Reviewer</h2>
             <div className="mb-6">
@@ -80,6 +82,7 @@ const ResumeReviewer = () => {
                 </div>
             )}
         </div>
+        </AppLayout>
     );
 };
 
