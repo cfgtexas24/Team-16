@@ -19,7 +19,6 @@ exports.loginClient = async (req, res) => {
     
     try {
         const client = await Client.findOne({email: email})
-        console.log(client)
         if (!client) {
             return res.status(400).json({error: "User not found"})
         }
@@ -29,7 +28,7 @@ exports.loginClient = async (req, res) => {
         }
         const token = jwt.sign({
             email: client.email,
-            password: client.password
+            user: "client"
         },
         process.env.token
 
@@ -44,7 +43,7 @@ exports.loginClient = async (req, res) => {
 
 
 exports.editProfile = async (req, res) => {
-    const { email, password, skills, applied, phone, linkedin } = req.body;
+    const { email, password, skills, applied, phone, linkedin, experiences } = req.body;
 
     try {
         // Find the client by email
@@ -60,6 +59,7 @@ exports.editProfile = async (req, res) => {
         if (applied) client.applied = applied; // Update applied jobs if provided
         if (phone) client.phone = phone;
         if (linkedin) client.linkedin = linkedin;
+        if (experiences) client.experiences = experiences;
 
         // Save the updated client document
         await client.save();

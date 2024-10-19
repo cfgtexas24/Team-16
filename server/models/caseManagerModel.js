@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 
-const adminSchema = new mongoose.Schema({
+const caseManagerSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
@@ -10,11 +10,12 @@ const adminSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    clients: { type: mongoose.Schema.Types.ObjectId, ref: 'Client', required: false}, // Reference to Client model
 }, { timestamps: true });
 
 // Pre-save hook to hash the password before saving
-adminSchema.pre('save', async function (next) {
+caseManagerSchema.pre('save', async function (next) {
     const user = this;
 
     // Only hash the password if it's new or has been modified
@@ -38,7 +39,7 @@ adminSchema.pre('save', async function (next) {
 });
 
 // Method to compare the entered password with the hashed password
-adminSchema.methods.comparePassword = async function (enteredPassword) {
+caseManagerSchema.methods.comparePassword = async function (enteredPassword) {
     return bcrypt.compare(enteredPassword, this.password);
 };
 
@@ -47,4 +48,5 @@ adminSchema.methods.comparePassword = async function (enteredPassword) {
 
 const Admin = mongoose.model('Admin', adminSchema);
 
-module.exports = Admin;
+
+const CaseManager = mongoose.model('CaseManager', caseManagerSchema);

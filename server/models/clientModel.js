@@ -19,6 +19,23 @@ const clientSchema = new Schema({
         type: [String], // Array of strings for skills
         default: [] // Optional: default to an empty array
     },
+    experiences: [{
+        employerName: {
+          type: String,
+        },
+        roleName: {
+          type: String,
+        },
+        description: {
+            type: String,
+        },
+        startDate: {
+            type: String,
+        },
+        endDate: {
+            type: String,
+        }
+      }],
     applied: { type: mongoose.Schema.Types.ObjectId, ref: 'Job', required: false}, // Reference to Job model
 
     phone: {

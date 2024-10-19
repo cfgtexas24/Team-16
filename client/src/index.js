@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from "./features/login/LoginPage";
 import ProfileView from "./components/profile";
+import RegisterPage from "./features/register/RegisterPage";
 
 import {
   createBrowserRouter,
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
     path: "/profile",
     element: <ProfileView />,
   },
+  {
+    path: "/register",
+    element: <RegisterPage />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
