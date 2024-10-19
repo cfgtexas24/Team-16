@@ -67,6 +67,7 @@ export const register = async (email, password) => {
 
 export const getDecodedToken = () => {
   const token = localStorage.getItem(LOCAL_STORAGE_JWT_KEY);
+  if (!token) return null;
   const body = token.split('.')[1];
   const decode = JSON.parse(atob(body));
   return decode

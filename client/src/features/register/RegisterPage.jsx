@@ -1,11 +1,17 @@
 // TODO: this is basically a copy of the login page, but for registering. we should try to de duplicate this code
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../login/login.css'
 import { register, login } from '../../lib/auth';
 import { Link } from 'react-router-dom';
+import { getDecodedToken } from '../../lib/auth';
 
 function LoginPage() {
+  useEffect(()=>{
+    if (getDecodedToken()) {
+        window.location.href = '/home'
+    }
+  }, [])
   // States for handling user input
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
