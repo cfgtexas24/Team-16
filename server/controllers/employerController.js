@@ -21,4 +21,14 @@ exports.createEmployer = async (req, res) => {
   }
 };
 
-// ... other CRUD operations ...
+exports.getAllPositions = async (req, res) => {
+    try {
+      const employer = await Employer.findById(req.params.id).populate('listings');
+      if (!employer) {
+        return res.status(404).json({ message: 'Employer not found' });
+      }
+      res.status(200).json(employer.listings);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
