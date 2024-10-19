@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import TopBar from "../../components/topbar";
 import SideBar from "../../components/sidebar_mobile";
+import { getDecodedToken } from "../../lib/auth";
 
 function HomePage() {
+  const [n, setName] = useState("")
+  useEffect( () => {
+    const decodedToken = getDecodedToken();
+    const {name} = decodedToken;
+    setName(name)
+  
+  }, [])
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar visibility
 
   const toggleSidebar = () => {
@@ -69,7 +77,7 @@ function HomePage() {
           className="text-2xl text-black font-bold p-10"
           style={{ backgroundColor: "#F6C344" }}
         >
-          Welcome Priyanka Koppula
+          Welcome {n}
         </h2>
       </div>
     </div>
