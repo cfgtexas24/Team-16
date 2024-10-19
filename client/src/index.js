@@ -10,11 +10,17 @@ import {
 
 import "./index.css";
 import './App.css';
+import JobPage from './features/Job Page/JobPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
+  },
+
+  {
+    path: "/jobs",
+    element: <JobPage />,
   },
 ]);
 
