@@ -28,7 +28,8 @@ exports.loginClient = async (req, res) => {
         }
         const token = jwt.sign({
             email: client.email,
-            user: "client"
+            user: "client",
+            name: client.name
         },
         process.env.token
 
@@ -43,7 +44,9 @@ exports.loginClient = async (req, res) => {
 
 
 exports.editProfile = async (req, res) => {
-    const { email, password, skills, phone, linkedin, experiences } = req.body;
+
+    const { email, password, skills, phone, linkedin, experiences, name } = req.body;
+
 
     try {
         // Find the client by email
@@ -59,6 +62,7 @@ exports.editProfile = async (req, res) => {
         if (phone) client.phone = phone;
         if (linkedin) client.linkedin = linkedin;
         if (experiences) client.experiences = experiences;
+        if (name) client.name = name;
 
         // Save the updated client document
         await client.save();

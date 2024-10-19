@@ -14,6 +14,9 @@ const clientSchema = new Schema({
         type: String,
         required: true
     },
+    name: {
+        type : String
+    },
     skills: {
 
         type: [String], // Array of strings for skills
