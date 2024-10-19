@@ -9,7 +9,7 @@ import LoginPage from "./features/login/LoginPage";
 import RegisterPage from "./features/register/RegisterPage";
 import ProfileView from "./components/profileView";
 import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
-import HomePage from "./features/home/HomePage";
+import AppLayout from "./features/home/HomePage";
 
 import EmployeeLoginPage from "./features/login/EmployeeLoginPage"
 import MentorLoginPage from "./features/login/MentorLoginPage";
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <HomePage />,
+    element: <AppLayout />,
   },
   {
 
