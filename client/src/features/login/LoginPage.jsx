@@ -6,7 +6,7 @@ function LoginPage() {
   // States for handling user input
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Handle form submission
   const handleSubmit = async (e) => {
