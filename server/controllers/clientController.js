@@ -44,7 +44,7 @@ exports.loginClient = async (req, res) => {
 
 
 exports.editProfile = async (req, res) => {
-    const { email, password, skills, applied, phone, linkedin } = req.body;
+    const { email, password, skills, applied, phone, linkedin, experiences } = req.body;
 
     try {
         // Find the client by email
@@ -60,6 +60,7 @@ exports.editProfile = async (req, res) => {
         if (applied) client.applied = applied; // Update applied jobs if provided
         if (phone) client.phone = phone;
         if (linkedin) client.linkedin = linkedin;
+        if (experiences) client.experiences = experiences;
 
         // Save the updated client document
         await client.save();
