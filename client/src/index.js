@@ -11,9 +11,9 @@ import ProfileView from "./components/profileView";
 import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
 import AppLayout from "./features/home/HomePage";
 
-import EmployeeLoginPage from "./features/login/EmployeeLoginPage"
+import EmployeeLoginPage from "./features/login/EmployeeLoginPage";
 import MentorLoginPage from "./features/login/MentorLoginPage";
-import Header from "./components/topbar"
+import Header from "./components/topbar";
 
 import AdminDataPage from "./features/AdminDataPage/DataPage";
 
@@ -22,18 +22,17 @@ import ResumeReviewer from "./features/resume-reviewer/Reviewer";
 import Resources from "./features/misc-resources/Resources";
 import BudgetGame from "./features/budget-game/BudgetGame";
 
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
-import './App.css';
-import JobPage from './features/Job Page/JobPage';
+import "./App.css";
+import JobPage from "./features/Job Page/JobPage";
 
 import AdminLoginPage from "./features/login/AdminLoginPage";
 
-import Stocks from './features/stocks/Stocks';
-
-
+import Stocks from "./features/stocks/Stocks";
+import AboutUs from "./features/AboutUsPage/aboutus";
+import CertificationsPage from "./features/certifications/certifications";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +42,14 @@ const router = createBrowserRouter([
   {
     path: "/jobs",
     element: <JobPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutUs />,
+  },
+  {
+    path: "/certifications",
+    element: <CertificationsPage />,
   },
   {
     path: "/register",
@@ -61,7 +68,6 @@ const router = createBrowserRouter([
     element: <AppLayout />,
   },
   {
-
     path: "/employer-signin",
     element: <EmployeeLoginPage />,
   },
@@ -86,24 +92,23 @@ const router = createBrowserRouter([
     element: <ResumeReviewer />,
   },
   {
-      path: "/stocks",
-      element: <Stocks />,
+    path: "/stocks",
+    element: <Stocks />,
   },
   {
-      path: "/resources",
-      element: <Resources />,
+    path: "/resources",
+    element: <Resources />,
   },
   {
-    path: '/budget-game',
+    path: "/budget-game",
     element: <BudgetGame />,
-
-  }
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Header/>
+    <Header />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
