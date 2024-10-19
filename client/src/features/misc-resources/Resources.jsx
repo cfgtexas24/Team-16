@@ -49,8 +49,7 @@ const LinksPage = () => {
           <div className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow">
             <h2 className="text-xl font-semibold mb-2"><span className="text-4xl">🛠️</span> Resume Generator</h2>
             <p className="text-gray-600 mb-4">
-              Generate a professional-looking resume by filling out some basic
-              information.
+              Generate a professional-looking resume from the information entered on the profile page.
             </p>
             <a
               href="/resume-generator"
