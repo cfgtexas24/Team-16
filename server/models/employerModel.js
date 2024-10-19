@@ -20,6 +20,10 @@ const employerSchema = new mongoose.Schema({
   },
   company_description: String,
   location: String,
+  company_logo: {
+    type: String,
+    default: null
+  },
   listings: [{
     job_id: {
       type: mongoose.Schema.Types.ObjectId,

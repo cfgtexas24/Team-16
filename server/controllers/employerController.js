@@ -1,4 +1,5 @@
 const Employer = require('../models/employerModel');
+const Job = require('../models/jobModel');
 
 // Get all employers
 exports.getAllEmployers = async (req, res) => {
@@ -32,3 +33,36 @@ exports.getAllPositions = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+exports.addJob = async (req, res) => {
+  try {
+    const employerId = req.params.id;
+    const employer = await Employer.findById(employerId);
+
+    if (!employer) {
+      return res.status(404).json({ message: 'Employer not found' });
+    }
+
+    const newJob = new Job({
+      ...req.body,
+      employer: employerId
+    });
+
+    await newJob.save();
+
+    employer.listings.push({
+      job_id: newJob._id,
+      created_at: new Date()
+    });
+
+    await employer.save();
+
+    res.status(201).json({
+      message: 'Job added successfully',
+      job: newJob,
+      employer: employer
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
