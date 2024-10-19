@@ -13,7 +13,7 @@ import HomePage from "./features/home/HomePage";
 
 import EmployeeLoginPage from "./features/login/EmployeeLoginPage"
 import MentorLoginPage from "./features/login/MentorLoginPage";
-
+import Header from "./components/topbar"
 
 import AdminDataPage from "./features/AdminDataPage/DataPage";
 
@@ -103,6 +103,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <Header/>
     <RouterProvider router={router} />
   </React.StrictMode>
 );

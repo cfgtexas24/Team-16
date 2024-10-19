@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './JobPageStyling.css'; // Your CSS file with mobile styling
 import { getJobs, getJobsbyFeature } from '../../lib/auth';
+import { getDecodedToken } from '../../lib/auth';
 // Job data defined directly inside the component file
 
 
+
 const JobPage = () => {
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown state
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [job, setJob] = useState([]); // Initialize with an empty array
-
-
+  const [e, sete] = useState("")
+  useEffect(() => {
+    const decodedToken = getDecodedToken();
+    const { email } = decodedToken;
+    sete(email);
+  }, []);
   // Track the application status for each job (an array of booleans)
   const [appliedJobs, setAppliedJobs] = useState({});
 
@@ -44,7 +51,7 @@ const JobPage = () => {
   };
 
   // Function to handle applying to a job
-  const handleApply = (id) => {
+  const handleApply = (jobId) => {
     // Mark the job as applied by updating the state
     setAppliedJobs({ ...appliedJobs, [id]: true });
   };

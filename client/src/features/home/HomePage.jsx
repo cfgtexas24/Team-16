@@ -33,7 +33,7 @@ function HomePage() {
 
   return (
     <div className="home-container m-0 p-0 relative h-full">
-      <TopBar />
+      
       <SideBar
         isOpen={isSidebarOpen}
         className="absolute visibility:hidden"
