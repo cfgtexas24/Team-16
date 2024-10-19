@@ -20,7 +20,6 @@ app.use('/api/employers', employerRoutes);
 app.use('/api/client', clientRoutes);
 app.use('/api/jobs', jobRoutes);
 
-
 // Listen for requests
 app.listen(process.env.PORT, () => {
     console.log(`Connected to DB and Listening on port ${process.env.PORT}`)
