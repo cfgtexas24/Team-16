@@ -28,8 +28,14 @@ exports.getAllPositions = async (req, res) => {
     if (!employer) {
       return res.status(404).json({ message: 'Employer not found' });
     }
+    res.status(200).json(employer.listings);
+  } catch(error) {
+    res.status(500).json({ message: error.message });
+  }
 
-  };
+
+  }
+
 
   exports.loginEmployer = async (req, res) => {
     const {email, password} = req.body
@@ -56,13 +62,9 @@ exports.getAllPositions = async (req, res) => {
     } catch(err){
         res.json(500).json({error: "Server error"})
     }
-}
-
-    res.status(200).json(employer.listings);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
   }
-};
+
+    
 
 // Get a single employer by ID
 exports.getEmployerById = async (req, res) => {
