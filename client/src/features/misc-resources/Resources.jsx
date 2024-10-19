@@ -1,4 +1,5 @@
 import AppLayout from "../../components/AppLayout";
+import { Link } from "react-router-dom";
 
 const LinksPage = () => {
   return (
@@ -63,6 +64,19 @@ const LinksPage = () => {
             >
               Create Now
             </a>
+          </div>
+        </div>
+        <h1 className="text-3xl font-bold mb-6">Admin Tools</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <h2 className="text-xl font-semibold mb-2">Metrics Dashboard</h2>
+            <p className="text-gray-600 mb-4">
+              Find out the progress of your clients and track their progress towards
+              their goals.
+            </p>
+            <Link to="/admin" className="text-blue-600 hover:underline">
+              Learn More
+            </Link>
           </div>
         </div>
       </div>
