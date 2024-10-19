@@ -9,5 +9,6 @@ router.post('/editProfile', clientController.editProfile);
 router.post('/getApplications', clientController.getClientApplications);
 router.post('/createApplication', clientController.createClientApplications);
 router.post('/profile', clientController.getProfile);
-
+router.post('/reviewResume', clientController.reviewResume);
+router.post('/coverLetter', clientController.coverLetter);
 module.exports = router;

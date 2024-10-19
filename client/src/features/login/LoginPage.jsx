@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './login.css'
 import { login } from '../../lib/auth';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { getDecodedToken } from '../../lib/auth';
 function LoginPage() {
+  useEffect(()=>{
+    if (getDecodedToken()) {
+        window.location.href = '/home'
+    }
+  }, [])
   // States for handling user input
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

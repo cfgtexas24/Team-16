@@ -24,7 +24,6 @@ export const fetchWithAuth = async (url, options) => {
   }
   return data;
 };
-
 export const login = async (email, password) => {
   const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/client/login', {
     method: 'POST',
@@ -36,6 +35,7 @@ export const login = async (email, password) => {
   const data = await response.json();
   if (response.status === 200) {
     localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
+    window.location.href = '/home'
     return true; // Login successful
   } else {
     if (data.error) {
@@ -68,6 +68,7 @@ export const register = async (email, password) => {
 
 export const getDecodedToken = () => {
   const token = localStorage.getItem(LOCAL_STORAGE_JWT_KEY);
+  if (!token) return null;
   const body = token.split('.')[1];
   const decode = JSON.parse(atob(body));
   return decode
