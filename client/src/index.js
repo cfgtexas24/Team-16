@@ -108,6 +108,10 @@ const router = createBrowserRouter([
     path: "/certifications",
     element: <CertificatePage />,
   },
+  {
+    path: "/messages",
+    element: <Messages />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
