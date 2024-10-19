@@ -1,15 +1,15 @@
 # Team-16
 
-# IMPORTANT - MAKE SURE TO CREATE A .env file and copy and paste the contents from sample.env and replace "<password_template>" with the password
+## IMPORTANT - MAKE SURE TO CREATE A .env file and copy and paste the contents from sample.env and replace "<password_template>" with the password
 
-# NPM installs 
+## NPM installs 
 
-# How to run server - npm run dev
-# server package installs - npm install mongoose, express, cors, dotenv, nodemon
+## How to run server - npm run dev
+## server package installs - npm install mongoose, express, cors, dotenv, nodemon
 
 
-# How to run client - npm start
-# client package installs - npm install 
+## How to run client - npm start
+## client package installs - npm install 
 
 
 
