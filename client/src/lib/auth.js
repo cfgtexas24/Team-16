@@ -83,11 +83,12 @@ export const login = async (email, password) => {
   if (response.status === 200) {
     localStorage.setItem(LOCAL_STORAGE_JWT_KEY, data.token);
     window.location.href = '/home'
+    return true; // Login successful
   } else {
     if (data.error) {
-      alert(data.error);
+      throw new Error(data.error);
     } else {
-      alert('An error occurred while logging in.');
+      throw new Error('Login failed');
     }
   }
 };

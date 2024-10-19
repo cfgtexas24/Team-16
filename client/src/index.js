@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import LoginPage from "./features/login/LoginPage";
 import RegisterPage from "./features/register/RegisterPage";
+import ProfileView from "./components/profileView";
 import ViewDocInDevelopment from "./features/resume-generator/ViewDocInDevelopment";
 import HomePage from "./features/home/HomePage";
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     element: <RegisterPage />,
   },
   {
+    path: "/profile",
+    element: <ProfileView />,
+  },
+  {
     path: "/resume-dev",
     element: <ViewDocInDevelopment />,
   },
@@ -39,9 +44,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <div className="App">
-      <RouterProvider router={router} />
-    </div>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
