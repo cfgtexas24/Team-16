@@ -21,7 +21,7 @@ import CoverLetterGenerator from "./features/cover-letter-generator/CoverLetterG
 import ResumeReviewer from "./features/resume-reviewer/Reviewer";
 import Resources from "./features/misc-resources/Resources";
 import BudgetGame from "./features/budget-game/BudgetGame";
-
+import Messages from "./features/messages/Messages";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -96,7 +96,10 @@ const router = createBrowserRouter([
   {
     path: '/budget-game',
     element: <BudgetGame />,
-
+  },
+  {
+      path: '/messages',
+      element: <Messages />,
   }
 ]);
 
