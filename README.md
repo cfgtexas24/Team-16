@@ -138,3 +138,4 @@ Authentication: JWT (JSON Web Tokens) for secure login and session management.
 File Uploads: Multer library in Node.js to handle resume uploads.
 
 Job Matching: Basic matching algorithm that cross-references student qualifications with job requirements.
+ <br /> <br /> The code ("Code") in this repository was created solely by the student teams during a coding competition hosted by JPMorgan Chase Bank, N.A. ("JPMC"). JPMC did not create or contribute to the development of the Code. This Code is provided AS IS and JPMC makes no warranty of any kind, express or implied, as to the Code, including but not limited to, merchantability, satisfactory quality, non-infringement, title or fitness for a particular purpose or use.
